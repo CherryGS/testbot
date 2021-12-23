@@ -4,6 +4,8 @@
 
 .env.prod
 src/
+docker-compose.yml
+Dockerfile
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
