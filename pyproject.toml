@@ -8,6 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.7.3"
 nonebot2 = "^2.0.0.a1"
+SQLAlchemy = "^1.4.29"
+psycopg2-binary = "^2.9.2"
 
 [tool.poetry.dev-dependencies]
 nb-cli = "^0.5.0"
