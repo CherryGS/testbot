@@ -11,12 +11,19 @@ app = nonebot.get_asgi()
 driver = nonebot.get_driver()
 driver.register_adapter("cqhttp", CQHTTPBot)
 
+# Models 加载
+import models
+models.Base.metadata.create_all(models.get_engine())
+models.db = models.sessionmaker(bind=models.engine)
+# ----------
+
 nonebot.load_builtin_plugins()
-nonebot.load_plugin("nonebot_plugin_test")
+# nonebot.load_plugin("nonebot_plugin_test")
 
 # Please DO NOT modify this file unless you know what you are doing!
 # As an alternative, you should use command `nb` or modify `pyproject.toml` to load plugins
 nonebot.load_from_toml("pyproject.toml")
+
 
 nonebot.load_plugin('admin.plugins_global_control') # 该插件要为最后加载
 
