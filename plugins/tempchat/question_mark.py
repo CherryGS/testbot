@@ -5,6 +5,7 @@ from nonebot.matcher import Matcher
 from nonebot.plugin import on_regex
 from nonebot.log import logger
 from nonebot.typing import T_State
+from nonebot.exception import *
 import random
 
 import os
@@ -15,7 +16,7 @@ lis = os.listdir("src/qmark")
 @cmd.handle()
 async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
     if random.random() < 0.3:
-        return
+        await cmd.finish('?')
     res : bytes
     r = random.choice(lis)
     with open('src/qmark/'+r, 'rb') as e:

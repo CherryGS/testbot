@@ -17,7 +17,6 @@ from nonebot.rule import ArgumentParser
 driver = get_driver()
 conf = driver.config
 plugins_settings = dict()
-ban_settings = dict()
 
 
 @driver.on_startup
