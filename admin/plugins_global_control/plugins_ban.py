@@ -55,7 +55,6 @@ async def _(matcher: Matcher, bot: Bot, event: Event, state: T_State):
             raise IgnoredException("群号:{}被全局ban".format(handle_gr))
         except KeyError:
             pass
-    raise FinishedException()
 
 # -----------------------------------------------------------------------------
 
