@@ -15,9 +15,18 @@ async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
     id = event.group_id
     flag = False
     if id in dic.keys():
-        if dic[id] == msg:
-            flag = True
-    dic[id] = msg
+        if dic[id]['content'] == msg:
+            if dic[id]['num'] == 3 : 
+                flag = True
+                dic[id]['num'] = 0
+            else : dic[id]['num'] += 1
+        else :
+            dic[id]['content'] = msg
+            dic[id]['num'] = 1
+    else: 
+        dic[id] = {}
+        dic[id]['content'] = msg
+        dic[id]['num'] = 1
     if flag :
         await cmd.finish(msg)
     else:
