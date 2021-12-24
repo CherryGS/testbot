@@ -14,8 +14,8 @@ lis = os.listdir("src/jls")
 
 @cmd.handle()
 async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
-    if random.random() < 0.3:
-        await cmd.finish('This is jiangly fan club')
+    if random.random() < 0.1:
+        await cmd.finish('This is jiangly fans club')
     res : bytes
     r = random.choice(lis)
     with open('src/jls/'+r, 'rb') as e:

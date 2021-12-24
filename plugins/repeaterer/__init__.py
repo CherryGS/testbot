@@ -5,6 +5,7 @@ from nonebot.matcher import Matcher
 from nonebot.plugin import on_message
 from nonebot.log import logger
 from nonebot.typing import T_State
+from nonebot.exception import *
 
 cmd = on_message(priority=10)
 dic = {}
@@ -30,4 +31,4 @@ async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
     if flag :
         await cmd.finish(msg)
     else:
-        return
+        raise FinishedException()
