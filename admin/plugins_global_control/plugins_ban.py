@@ -14,10 +14,6 @@ from models import db
 from nonebot.exception import IgnoredException
 from nonebot.rule import ArgumentParser
 
-export = export()
-export.ignore_global_control = True
-
-
 driver = get_driver()
 conf = driver.config
 plugins_settings = dict()
