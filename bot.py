@@ -13,8 +13,7 @@ driver.register_adapter("cqhttp", CQHTTPBot)
 
 # Models 加载
 import models
-models.Base.metadata.create_all(models.get_engine())
-models.db = models.sessionmaker(bind=models.engine)
+models.db = models.sessionmaker(bind=models.get_engine())
 # ----------
 
 nonebot.load_builtin_plugins()
