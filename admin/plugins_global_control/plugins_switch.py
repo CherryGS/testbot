@@ -62,7 +62,6 @@ async def _():
 async def _(matcher: Matcher, bot: Bot, event: Event, state: T_State):
     # ignore掉全局关闭的插件matcher
     name = matcher.plugin_name
-    logger.debug(name)
     if matcher.plugin_name not in plugins_settings.keys():
         return
     if plugins_settings[matcher.plugin_name]['is_start'] == False:
