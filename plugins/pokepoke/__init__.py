@@ -33,7 +33,7 @@ cmd = on_notice(rule=to_me(), priority=10)
 
 @cmd.handle()
 async def _(bot: Bot, event: PokeNotifyEvent, state: T_State):
-    if random.random() < 0.6:
+    if random.random() < 0.4:
         await cmd.finish(random.choice(poke_reply))
     else : raise FinishedException()
 

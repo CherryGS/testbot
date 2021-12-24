@@ -17,8 +17,9 @@ lis = os.listdir("src/qmark")
 async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
     if random.random() < 0.3:
         await cmd.finish('?')
-    res : bytes
-    r = random.choice(lis)
-    with open('src/qmark/'+r, 'rb') as e:
-        res = e.read()
-    await cmd.finish(MessageSegment.image(BytesIO(res)))
+    else:
+        res : bytes
+        r = random.choice(lis)
+        with open('src/qmark/'+r, 'rb') as e:
+            res = e.read()
+        await cmd.finish(MessageSegment.image(BytesIO(res)))
