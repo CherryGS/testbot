@@ -1,16 +1,15 @@
 from nonebot.adapters.cqhttp import Bot
-from nonebot.adapters.cqhttp import Event
+from nonebot.adapters.cqhttp.event import GroupMessageEvent
 from nonebot.matcher import Matcher
 from nonebot.permission import SUPERUSER
-from nonebot.plugin import on_command, plugins, on_shell_command
+from nonebot.plugin import on_command, on_shell_command
 from nonebot.log import logger
 from nonebot.message import run_preprocessor
 from nonebot.plugin import export
 from nonebot.typing import T_State
+from utils.sql import get_engine
 from sqlalchemy.orm import sessionmaker
 from nonebot import get_driver
-from models.admin import plugins_global_control as models
-from models import db
 from nonebot.exception import IgnoredException
 from nonebot.rule import ArgumentParser
 
@@ -20,47 +19,21 @@ export.ignore_global_control = True
 
 driver = get_driver()
 conf = driver.config
+db = type(sessionmaker)
 plugins_settings = dict()
 
 
 @driver.on_startup
 async def _():
-    # 初始化插件信息
-    logger.debug(str(plugins))
-    session = db()
-    now_plugins = dict()
-    for i in plugins.items():
-        if not i[1].export.ignore_global_control:
-            now_plugins[i[0]] = i[1]
-    db_plugins = session.query(models.DB).all()
-    try:
-        for i in db_plugins:
-            if i.plugin_name not in now_plugins.keys():
-                session.delete(i)
-        for i in now_plugins.keys():
-            name = [_.plugin_name for _ in db_plugins]
-            if i not in name:
-                session.add(models.DB(plugin_name=i))
-        session.commit()
-    except Exception as e:
-        session.roll_back()
-        logger.error("插件信息初始化错误")
-        raise e
-    finally:
-        session.close()
-
-    # 存到内存中避免查询开销过大
-    db_plugins = session.query(models.DB).all()
-    global plugins_settings
-    for i in db_plugins:
-        plugins_settings[i.plugin_name] = {}    
-        plugins_settings[i.plugin_name]['is_start'] = i.is_start
-
-    logger.info("插件信息初始化成功")
+    # 初始化数据库连接
+    global db
+    engine = get_engine()
+    models.Base.metadata.create_all(engine)
+    db = sessionmaker(bind=engine)
 
 
 @run_preprocessor
-async def _(matcher: Matcher, bot: Bot, event: Event, state: T_State):
+async def _(matcher: Matcher, bot: Bot, event: GroupMessageEvent, state: T_State):
     # ignore掉关闭的插件matcher
     name = matcher.plugin_name
     logger.debug(name)
@@ -68,15 +41,15 @@ async def _(matcher: Matcher, bot: Bot, event: Event, state: T_State):
     if matcher.plugin_name not in plugins_settings.keys():
         return
     if plugins_settings[matcher.plugin_name]['is_start'] == False:
-        logger.debug("插件{}被全局禁用".format(name))
-        raise IgnoredException("插件{}被全局禁用".format(name))
+        logger.debug("插件{}被禁用".format(name))
+        raise IgnoredException("插件{}被禁用".format(name))
 
 
 cmd1 = on_command('listplugins', priority=10, permission=SUPERUSER)
 
 
 @cmd1.handle()
-async def _(bot: Bot, event: Event, state: T_State):
+async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
     # 输出插件信息
     tx = str()
     global plugins_settings
@@ -91,7 +64,7 @@ cmd2 = on_shell_command('setplugin', parser=parser, permission=SUPERUSER)
 
 
 @cmd2.handle()
-async def _(bot: Bot, event: Event, state: T_State):
+async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
     # 改变插件状态
     global plugins_settings
     global db
