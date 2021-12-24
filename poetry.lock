@@ -337,6 +337,18 @@ deploy = ["docker-compose (>=1.29.2,<1.30.0)"]
 docker = ["docker-compose (>=1.29.2,<1.30.0)"]
 
 [[package]]
+name = "nonebot-adapter-cqhttp"
+version = "2.0.0a16"
+description = "OneBot(CQHTTP) adapter for nonebot2"
+category = "main"
+optional = false
+python-versions = ">=3.7.3,<4.0.0"
+
+[package.dependencies]
+httpx = ">=0.18.0,<1.0.0"
+nonebot2 = ">=2.0.0-alpha.14,<3.0.0"
+
+[[package]]
 name = "nonebot-plugin-test"
 version = "0.3.0"
 description = "Test frontend for nonebot v2+"
@@ -722,7 +734,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.3"
-content-hash = "4e8fbde7abe30fc7f19ce8bf6ba85b6253b85028366905c5202514dbf8a7b916"
+content-hash = "405868e3a221577927d3134c65343b6f173eb32445100640bb5ba699321655b7"
 
 [metadata.files]
 aiofiles = [
@@ -960,6 +972,10 @@ markupsafe = [
 nb-cli = [
     {file = "nb-cli-0.5.1.tar.gz", hash = "sha256:b3f31e1d2fe4e3d6551cf9dcb0843ebc53503df63baf017b51347673ad10c1e4"},
     {file = "nb_cli-0.5.1-py3-none-any.whl", hash = "sha256:c47cbdb106db6b2ae5fe4ff538775da8c8f2d17f535432b13eb23ad1889c2fc2"},
+]
+nonebot-adapter-cqhttp = [
+    {file = "nonebot-adapter-cqhttp-2.0.0a16.tar.gz", hash = "sha256:9de270291b98c41a45e5b629c02f16e3b25cafb3867b8161851f49c84145d8aa"},
+    {file = "nonebot_adapter_cqhttp-2.0.0a16-py3-none-any.whl", hash = "sha256:831747c55c9c1a660215225f84784a4ca275a84bffa8d1312524367066b68bbe"},
 ]
 nonebot-plugin-test = [
     {file = "nonebot-plugin-test-0.3.0.tar.gz", hash = "sha256:6cea9342f4df69a73b9aa27a3eaa22a08c6e54b675e2e6638b4b3fc8568cd6fe"},
