@@ -4,6 +4,7 @@ from nonebot.adapters.cqhttp.event import PokeNotifyEvent
 from nonebot.typing import T_State
 from nonebot.plugin import export, on_notice
 import random
+from nonebot.exception import *
 
 export = export()
 
@@ -34,4 +35,5 @@ cmd = on_notice(rule=to_me(), priority=10)
 async def _(bot: Bot, event: PokeNotifyEvent, state: T_State):
     if random.random() < 0.6:
         await cmd.finish(random.choice(poke_reply))
+    else : raise FinishedException()
 
