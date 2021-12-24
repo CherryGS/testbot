@@ -11,7 +11,7 @@ from nonebot.typing import T_State
 from nonebot import get_driver
 from models.admin import plugins_global_control as models
 from models import db
-from nonebot.exception import IgnoredException
+from nonebot.exception import FinishedException, IgnoredException
 from nonebot.rule import ArgumentParser
 
 driver = get_driver()
@@ -37,10 +37,9 @@ async def _():
 
 
 @run_preprocessor
-async def _(matcher: Matcher, bot: Bot, event: GroupMessageEvent, state: T_State):
+async def _(matcher: Matcher, bot: Bot, event: Event, state: T_State):
     # ignore掉全局被ban的人/群的matcher
     handle_qq = event.user_id
-    handle_gr = event.group_id
     name = matcher.plugin_name
     try:
         x = ban_settings[0][handle_qq][name]
@@ -48,13 +47,15 @@ async def _(matcher: Matcher, bot: Bot, event: GroupMessageEvent, state: T_State
         raise IgnoredException("QQ号:{}被全局ban".format(handle_qq))
     except KeyError:
         pass
-    try:
-        x = ban_settings[1][handle_gr][name]
-        logger.debug("群号:{}被全局ban".format(handle_gr))
-        raise IgnoredException("群号:{}被全局ban".format(handle_gr))
-    except KeyError:
-        pass
-    return
+    if isinstance(event, GroupMessageEvent):
+        handle_gr = event.group_id
+        try:
+            x = ban_settings[1][handle_gr][name]
+            logger.debug("群号:{}被全局ban".format(handle_gr))
+            raise IgnoredException("群号:{}被全局ban".format(handle_gr))
+        except KeyError:
+            pass
+    raise FinishedException()
 
 # -----------------------------------------------------------------------------
 
