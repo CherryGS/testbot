@@ -1,14 +1,19 @@
+from sqlalchemy.engine.base import Engine
 from sqlalchemy.orm import sessionmaker
-
 from sqlalchemy import create_engine
+from nonebot import get_driver
+from .config import DBSettings
 
-engine = None
-db = type(sessionmaker)
+driver = get_driver()
+conf = DBSettings(**driver.config.dict())
 
+engine = create_engine(
+    "postgresql+psycopg2://{}:{}@{}/{}".format(
+        conf.db_user, conf.db_passwd, conf.db_addr, conf.db_name
+    ),
+    pool_recycle=3600,
+    echo=conf.debug,
+    future=True,
+)
+db = sessionmaker(bind=engine)
 
-def get_engine(user: str = 'testbot', passwd: str = 'testbot', addr: str = "pgmain:5432", db: str = 'testbot'):
-    global engine
-    if engine == None:
-        engine = create_engine(
-            "postgresql+psycopg2://{}:{}@{}/{}".format(user, passwd, addr, db), pool_recycle=3600)
-    return engine
