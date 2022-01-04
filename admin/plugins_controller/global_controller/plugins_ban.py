@@ -5,7 +5,7 @@ from nonebot.log import logger
 from nonebot.matcher import Matcher
 from nonebot.message import run_preprocessor
 from nonebot.permission import SUPERUSER
-from nonebot.plugin import on_shell_command
+from nonebot.plugin import on_command, on_shell_command
 from nonebot.rule import ArgumentParser
 from nonebot.typing import T_State
 from sqlalchemy import select
@@ -13,32 +13,29 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.sql.expression import delete
 
 from ..hook import hook
-from ..models import ASession, db
+from ..models import ASession
 from ..models.global_models import pluginsBan, pluginsCfg
-
-_ban_settings = {0: {}, 1: {}}
-
-
-@hook.add_hook
-async def _():
-
-    # 加载全局ban
-    try:
-        session = ASession()
-        stmt = select(pluginsBan)
-        ban = (await session.execute(stmt)).scalars().all()
-        global _ban_settings
-        for i in ban:
-            _ban_settings |= {i.ban_type: {i.handle: {i.plugin_name: {}}}}
-        logger.info("全局ban初始化成功")
-    except:
-        logger.error("全局ban初始化失败")
-        raise
-    finally:
-        await session.close()
 
 
 # -----------------------------------------------------------------------------
+
+
+async def exists_rule(ban_type, handle, plugin_name):
+    stmt = (
+        select(pluginsBan)
+        .where(pluginsBan.ban_type == ban_type)
+        .where(pluginsBan.handle == handle)
+        .where(pluginsBan.plugin_name == plugin_name)
+        .limit(1)
+    )
+    try:
+        session = ASession()
+        res = await session.execute(stmt)
+        return bool(res.scalars().first())
+    except:
+        raise
+    finally:
+        await session.close()
 
 
 @run_preprocessor
@@ -47,15 +44,15 @@ async def _(matcher: Matcher, bot: Bot, event: Event, state: T_State):
     logger.debug("--- ban ---")
     handle_qq = int(event.user_id)
     name = matcher.plugin_name
-    if handle_qq in _ban_settings[0] and name in _ban_settings[0][handle_qq]:
-        logger.info("QQ号:{}被全局ban".format(handle_qq))
-        raise IgnoredException("QQ号:{}被全局ban".format(handle_qq))
+    if await exists_rule(0, handle_qq, name):
+        logger.warning("QQ号:{}被全局ban".format(handle_qq))
+        raise IgnoredException("")
 
     if isinstance(event, GroupMessageEvent):
         handle_gr = event.group_id
-        if handle_gr in _ban_settings[1] and name in _ban_settings[1][handle_gr]:
-            logger.info("群号:{}被全局ban".format(handle_gr))
-            raise IgnoredException("群号:{}被全局ban".format(handle_gr))
+        if await exists_rule(1, handle_gr, name):
+            logger.warning("群号:{}被全局ban".format(handle_gr))
+            raise IgnoredException("")
 
 
 # -----------------------------------------------------------------------------
@@ -107,7 +104,6 @@ async def _(bot: Bot, event: Event, state: T_State):
     session = ASession()
     try:
         session.add(pluginsBan(ban_type=ban_type, handle=handle, plugin_name=name))
-        _ban_settings |= {ban_type: {handle: {name: {}}}}
         await session.commit()
         await _cmd1.finish("ban执行成功")
     except SQLAlchemyError as e:
@@ -132,12 +128,9 @@ async def _(bot: Bot, event: Event, state: T_State):
     # unban 人/群
     ban_type, handle, name = await _BanParser(_cmd2, state["args"])
 
-    if (handle in _ban_settings[ban_type]) and (
-        name in _ban_settings[ban_type][handle]
-    ):
+    if await exists_rule(ban_type, handle, name):
         session = ASession()
         try:
-            _ban_settings[ban_type][handle].pop(name)
             stmt = delete(pluginsBan).where(
                 pluginsBan.ban_type == ban_type,
                 pluginsBan.handle == handle,
@@ -153,4 +146,14 @@ async def _(bot: Bot, event: Event, state: T_State):
             await session.close()
     else:
         await _cmd2.finish("该人/群未被ban插件 |{}|".format(name))
+
+
+# -----------------------------------------------------------------------------
+
+_cmd3 = on_command("listban", permission=SUPERUSER)
+
+
+@_cmd3.handle()
+async def _(bot: Bot, event: Event, state: T_State):
+    global _ban_settings
 

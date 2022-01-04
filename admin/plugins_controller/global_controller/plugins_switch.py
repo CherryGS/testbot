@@ -6,32 +6,47 @@ from nonebot.plugin import on_command, on_shell_command
 from nonebot.log import logger
 from nonebot.message import run_preprocessor
 from nonebot.typing import T_State
-from sqlalchemy.sql.expression import update
-from ..models import db, ASession
+from sqlalchemy.sql.expression import update, Update
+from ..models import ASession
 from ..models.global_models import pluginsCfg
 from nonebot.exception import IgnoredException
 from nonebot.rule import ArgumentParser
 from sqlalchemy import select
 from ..hook import hook
 
-_plugins_settings = dict()
 
-
-@hook.add_hook
-async def _():
-    # 存到内存中避免查询开销过大
-    stmt = select(pluginsCfg.plugin_name, pluginsCfg.is_start)
-    session = ASession()
+async def is_start(name) -> bool:
+    stmt = (
+        select(pluginsCfg)
+        .where(pluginsCfg.plugin_name == name)
+        .where(pluginsCfg.is_start == True)
+        .limit(1)
+    )
     try:
-        db_plugins = (await session.execute(stmt)).all()
-        for i in db_plugins:
-            _plugins_settings[i.plugin_name] = {}
-            _plugins_settings[i.plugin_name]["is_start"] = i.is_start
-        logger.info("插件开关信息初始化成功")
+        session = ASession()
+        if await is_exist(name):
+            res = await session.execute(stmt)
+            ok = bool(res.scalars().first())
+        else:
+            ok = True
     except:
         raise
     finally:
         await session.close()
+    return ok
+
+
+async def is_exist(name) -> bool:
+    stmt = select(pluginsCfg).where(pluginsCfg.plugin_name == name).limit(1)
+    try:
+        session = ASession()
+        res = await session.execute(stmt)
+        ok = bool(res.scalars().first())
+    except:
+        raise
+    finally:
+        await session.close()
+    return ok
 
 
 @run_preprocessor
@@ -39,11 +54,9 @@ async def _(matcher: Matcher, bot: Bot, event: Event, state: T_State):
     # ignore 掉全局关闭的插件 matcher
     logger.debug("--- ignore ---")
     name = matcher.plugin_name
-    if matcher.plugin_name not in _plugins_settings.keys():
-        return
-    if _plugins_settings[matcher.plugin_name]["is_start"] == False:
-        logger.info("插件{}被全局禁用".format(name))
-        raise IgnoredException("插件{}被全局禁用".format(name))
+    if not (await is_start(name)):
+        logger.warning("插件 |{}| 被全局关闭".format(name))
+        raise IgnoredException("")
 
 
 # -----------------------------------------------------------------------------
@@ -55,8 +68,17 @@ _cmd1 = on_command("listplugins", priority=1, permission=SUPERUSER)
 async def _(bot: Bot, event: Event, state: T_State):
     # 输出插件信息
     tx = str()
-    for i in _plugins_settings.items():
-        tx += "插件名: {}  启用状态: {} \n".format(i[0], bool(i[1]["is_start"]))
+    try:
+        session = ASession()
+        res = (
+            await session.execute(select(pluginsCfg.plugin_name, pluginsCfg.is_start))
+        ).all()
+        for i in res:
+            tx += "插件名: {}  启用状态: {} \n".format(i[0], i[1])
+    except:
+        raise
+    finally:
+        await session.close()
     await _cmd1.finish(tx)
 
 
@@ -75,20 +97,15 @@ async def _(bot: Bot, event: Event, state: T_State):
     if isinstance(args, Exception):
         await _cmd2.finish("参数填写错误 , 请检查")
     name = args.p
-    if name not in _plugins_settings.keys():
+    if not await is_exist(name):
         await _cmd2.finish("参数错误 , |{}| 不在插件列表中".format(name))
 
     session = ASession()
 
-    stmt = (
-        update(pluginsCfg)
-        .where(pluginsCfg.plugin_name == name)
-        .values(is_start=_plugins_settings[name]["is_start"] ^ True)
-        .execution_options(synchronize_session=False)
-    )
+    stmt = select(pluginsCfg).where(pluginsCfg.plugin_name == name).limit(1)
     try:
-        await session.execute(stmt)
-        _plugins_settings[name]["is_start"] ^= True
+        res = (await session.execute(stmt)).scalars().first()
+        res.is_start ^= True
         await session.commit()
     except Exception as e:
         await session.rollback()
