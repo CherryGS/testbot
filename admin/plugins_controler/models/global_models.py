@@ -1,7 +1,7 @@
 from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Boolean, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-import models
+from . import engine
 
 Base = declarative_base()
 
@@ -22,7 +22,7 @@ class pluginsBan(Base):
     plugin_name = Column(String)
 
 
-Base.metadata.create_all(models.engine)
+Base.metadata.create_all(engine)
 
 if __name__ == "__main__":
     pass

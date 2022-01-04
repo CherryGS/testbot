@@ -20,7 +20,7 @@ nonebot.load_builtin_plugins()
 nonebot.load_from_toml("pyproject.toml")
 
 
-nonebot.load_plugin("admin.plugins_global_control")  # 该插件要为最后加载
+nonebot.load_plugins("admin/")
 
 # Modify some config / config depends on loaded configs
 #

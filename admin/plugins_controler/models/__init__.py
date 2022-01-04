@@ -1,4 +1,3 @@
-from sqlalchemy.engine.base import Engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from nonebot import get_driver
@@ -16,4 +15,3 @@ engine = create_engine(
     future=True,
 )
 db = sessionmaker(bind=engine)
-
