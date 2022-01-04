@@ -1,9 +1,8 @@
 from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Boolean, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from . import engine
+from . import engine, Base
 
-Base = declarative_base()
+__all__ = []
 
 
 class pluginsCfg(Base):
@@ -12,17 +11,19 @@ class pluginsCfg(Base):
     plugin_name = Column(String, unique=True, primary_key=True)
     is_start = Column(Boolean, default=1)
 
+    __mapper_args__ = {"eager_defaults": True}
+
 
 class pluginsBan(Base):
     __tablename__ = "_admin_plugins_global_ban"
 
     id = Column(Integer, primary_key=True)
-    ban_type = Column(Boolean)
+    ban_type = Column(Integer)
     handle = Column(Integer)
     plugin_name = Column(String)
 
+    __mapper_args__ = {"eager_defaults": True}
 
-Base.metadata.create_all(engine)
 
 if __name__ == "__main__":
     pass

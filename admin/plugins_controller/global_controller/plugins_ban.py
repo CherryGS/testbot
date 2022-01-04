@@ -1,0 +1,156 @@
+from nonebot.adapters.cqhttp import Bot, Event
+from nonebot.adapters.cqhttp.event import GroupMessageEvent
+from nonebot.exception import IgnoredException
+from nonebot.log import logger
+from nonebot.matcher import Matcher
+from nonebot.message import run_preprocessor
+from nonebot.permission import SUPERUSER
+from nonebot.plugin import on_shell_command
+from nonebot.rule import ArgumentParser
+from nonebot.typing import T_State
+from sqlalchemy import select
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.sql.expression import delete
+
+from ..hook import hook
+from ..models import ASession, db
+from ..models.global_models import pluginsBan, pluginsCfg
+
+_ban_settings = {0: {}, 1: {}}
+
+
+@hook.add_hook
+async def _():
+
+    # 加载全局ban
+    try:
+        session = ASession()
+        stmt = select(pluginsBan)
+        ban = (await session.execute(stmt)).scalars().all()
+        global _ban_settings
+        for i in ban:
+            _ban_settings |= {i.ban_type: {i.handle: {i.plugin_name: {}}}}
+        logger.info("全局ban初始化成功")
+    except:
+        logger.error("全局ban初始化失败")
+        raise
+    finally:
+        await session.close()
+
+
+# -----------------------------------------------------------------------------
+
+
+@run_preprocessor
+async def _(matcher: Matcher, bot: Bot, event: Event, state: T_State):
+    # ignore掉全局被ban的人/群的matcher
+    logger.debug("--- ban ---")
+    handle_qq = int(event.user_id)
+    name = matcher.plugin_name
+    if handle_qq in _ban_settings[0] and name in _ban_settings[0][handle_qq]:
+        logger.info("QQ号:{}被全局ban".format(handle_qq))
+        raise IgnoredException("QQ号:{}被全局ban".format(handle_qq))
+
+    if isinstance(event, GroupMessageEvent):
+        handle_gr = event.group_id
+        if handle_gr in _ban_settings[1] and name in _ban_settings[1][handle_gr]:
+            logger.info("群号:{}被全局ban".format(handle_gr))
+            raise IgnoredException("群号:{}被全局ban".format(handle_gr))
+
+
+# -----------------------------------------------------------------------------
+
+_parser = ArgumentParser()
+_parser.add_argument("-u")  # 个人 qq 号
+_parser.add_argument("-g")  # 群号
+_parser.add_argument("-p")  # 插件名
+
+_cmd1 = on_shell_command("ban", parser=_parser, permission=SUPERUSER)
+
+
+async def _BanParser(matcher, args):
+    if isinstance(args, Exception):
+        await matcher.finish("参数填写错误 , 请检查")
+
+    if args.u and args.g:
+        await matcher.finish("个人和群只能选择一个")
+
+    if not args.u and not args.g:
+        await matcher.finish("个人和群必须选择一个")
+
+    async with ASession() as session:
+        stmt = select(pluginsCfg).where(pluginsCfg.plugin_name == args.p).limit(1)
+        res = await session.execute(stmt)
+        if not res.first():
+            await matcher.finish("参数错误 , |{}| 不在插件列表中".format(args.p))
+
+    ban_type = 0
+    handle: int
+    name = args.p
+
+    if args.g:
+        ban_type = 1
+        handle = int(args.g)
+    else:
+        ban_type = 0
+        handle = int(args.u)
+
+    return ban_type, handle, name
+
+
+@_cmd1.handle()
+async def _(bot: Bot, event: Event, state: T_State):
+    # ban 人/群
+    ban_type, handle, name = await _BanParser(_cmd1, state["args"])
+    global _ban_settings
+
+    session = ASession()
+    try:
+        session.add(pluginsBan(ban_type=ban_type, handle=handle, plugin_name=name))
+        _ban_settings |= {ban_type: {handle: {name: {}}}}
+        await session.commit()
+        await _cmd1.finish("ban执行成功")
+    except SQLAlchemyError as e:
+        await _cmd1.send("向数据库中添加ban时出现异常\n 异常信息 : \n {}".format(e))
+        raise e
+    finally:
+        await session.close()
+
+
+# -----------------------------------------------------------------------------
+
+_parser = ArgumentParser()
+_parser.add_argument("-u")  # 个人 qq 号
+_parser.add_argument("-g")  # 群号
+_parser.add_argument("-p")  # 插件名
+
+_cmd2 = on_shell_command("unban", parser=_parser, permission=SUPERUSER)
+
+
+@_cmd2.handle()
+async def _(bot: Bot, event: Event, state: T_State):
+    # unban 人/群
+    ban_type, handle, name = await _BanParser(_cmd2, state["args"])
+
+    if (handle in _ban_settings[ban_type]) and (
+        name in _ban_settings[ban_type][handle]
+    ):
+        session = ASession()
+        try:
+            _ban_settings[ban_type][handle].pop(name)
+            stmt = delete(pluginsBan).where(
+                pluginsBan.ban_type == ban_type,
+                pluginsBan.handle == handle,
+                pluginsBan.plugin_name == name,
+            )
+            await session.execute(stmt)
+            await session.commit()
+            await _cmd2.finish("unban执行成功")
+        except SQLAlchemyError as e:
+            await _cmd1.send("unban时出现异常\n 异常信息 : \n {}".format(e))
+            raise
+        finally:
+            await session.close()
+    else:
+        await _cmd2.finish("该人/群未被ban插件 |{}|".format(name))
+

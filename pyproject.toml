@@ -11,6 +11,7 @@ nonebot2 = "^2.0.0.a1"
 SQLAlchemy = "^1.4.29"
 psycopg2-binary = "^2.9.2"
 nonebot-adapter-cqhttp = "^2.0.0-alpha.16"
+asyncpg = "^0.25.0"
 
 [tool.poetry.dev-dependencies]
 nb-cli = "^0.5.0"
