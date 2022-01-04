@@ -1,0 +1,3 @@
+[submodule "admin/nonebot_plugin_PCtrl"]
+	path = admin/nonebot_plugin_PCtrl
+	url = git@github.com:CherryGS/nonebot_plugin_PCtrl.git
