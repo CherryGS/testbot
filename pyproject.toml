@@ -6,8 +6,8 @@ authors = ["CherryGS"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.7.3"
-nonebot2 = "^2.0.0.a1"
+python = "^3.9"
+nonebot2 = "^2.0.0-alpha.16"
 SQLAlchemy = "^1.4.29"
 nonebot-adapter-cqhttp = "^2.0.0-alpha.16"
 asyncpg = "^0.25.0"
