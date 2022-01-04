@@ -12,14 +12,15 @@ Base = declarative_base()
 AEngine: AsyncEngine = None
 ASession: sessionmaker = None
 
-AEngine = create_async_engine(
-    "postgresql+asyncpg://{}:{}@{}/{}".format(
+_link = ""
+if not _conf.db_link:
+    _link = "postgresql+asyncpg://{}:{}@{}/{}".format(
         _conf.db_user, _conf.db_passwd, _conf.db_addr, _conf.db_name
-    ),
-    pool_recycle=3600,
-    echo=_conf.debug,
-    future=True,
-)
+    )
+else:
+    _link = _conf.db_link
+
+AEngine = create_async_engine(_link, pool_recycle=3600, echo=_conf.debug, future=True,)
 ASession = sessionmaker(AEngine, expire_on_commit=False, class_=AsyncSession)
 
 from .global_models import *

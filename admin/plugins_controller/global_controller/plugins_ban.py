@@ -1,3 +1,4 @@
+from typing import List
 from nonebot.adapters.cqhttp import Bot, Event
 from nonebot.adapters.cqhttp.event import GroupMessageEvent
 from nonebot.exception import IgnoredException
@@ -102,8 +103,20 @@ async def _(bot: Bot, event: Event, state: T_State):
     global _ban_settings
 
     session = ASession()
+    stmt = (
+        select(pluginsBan)
+        .where(pluginsBan.ban_type == ban_type)
+        .where(pluginsBan.handle == handle)
+        .where(pluginsBan.plugin_name == name)
+        .limit(1)
+    )
     try:
-        session.add(pluginsBan(ban_type=ban_type, handle=handle, plugin_name=name))
+        res = (await session.execute(stmt)).scalars().first()
+        now = pluginsBan(ban_type=ban_type, handle=handle, plugin_name=name)
+        if res:
+            res = now
+        else:
+            session.add(now)
         await session.commit()
         await _cmd1.finish("ban执行成功")
     except SQLAlchemyError as e:
@@ -156,4 +169,26 @@ _cmd3 = on_command("listban", permission=SUPERUSER)
 @_cmd3.handle()
 async def _(bot: Bot, event: Event, state: T_State):
     global _ban_settings
-
+    msg = ""
+    try:
+        session = ASession()
+        res: List[pluginsBan] = (
+            await session.execute(select(pluginsBan))
+        ).scalars().all()
+        if res:
+            for i in res:
+                msg += (
+                    str(i.handle)
+                    + (" 群" if i.ban_type else " QQ")
+                    + "被 ban 了插件 "
+                    + i.plugin_name
+                    + "\n"
+                )
+        else:
+            msg = "空"
+    except Exception as e:
+        await _cmd3.send(str(e))
+        raise
+    finally:
+        await session.close()
+    await _cmd3.finish(msg)

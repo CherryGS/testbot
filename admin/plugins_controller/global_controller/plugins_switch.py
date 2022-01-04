@@ -1,3 +1,4 @@
+from typing import List
 from nonebot.adapters.cqhttp import Bot
 from nonebot.adapters.cqhttp import Event
 from nonebot.matcher import Matcher
@@ -67,14 +68,17 @@ _cmd1 = on_command("listplugins", priority=1, permission=SUPERUSER)
 @_cmd1.handle()
 async def _(bot: Bot, event: Event, state: T_State):
     # 输出插件信息
-    tx = str()
+    tx = ""
     try:
         session = ASession()
-        res = (
-            await session.execute(select(pluginsCfg.plugin_name, pluginsCfg.is_start))
-        ).all()
-        for i in res:
-            tx += "插件名: {}  启用状态: {} \n".format(i[0], i[1])
+        res: List[pluginsCfg] = (
+            await session.execute(select(pluginsCfg))
+        ).scalars().all()
+        if res:
+            for i in res:
+                tx += "插件名: {}  启用状态: {} \n".format(i.plugin_name, i.is_start)
+        else:
+            tx = "空"
     except:
         raise
     finally:
