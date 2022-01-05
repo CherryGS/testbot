@@ -20,7 +20,7 @@ nonebot.load_builtin_plugins()
 nonebot.load_from_toml("pyproject.toml")
 
 
-nonebot.load_plugins("admin/")
+nonebot.load_plugin("admin.nonebot_plugin_PCtrl")
 
 # Modify some config / config depends on loaded configs
 #
