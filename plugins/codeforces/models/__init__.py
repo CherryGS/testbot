@@ -6,7 +6,7 @@ from sqlalchemy.orm.decl_api import declarative_base
 from .config import DBSettings
 from nonebot.log import logger
 
-__all__ = []
+__all__ = ["AEngine", "ASession"]
 _driver = get_driver()
 _conf = DBSettings(**_driver.config.dict())
 Base = declarative_base()
@@ -35,7 +35,7 @@ ASession: sessionmaker = None
 ASession = sessionmaker(AEngine, expire_on_commit=False, class_=AsyncSession)
 
 
-from .user import *
+from .cf_info import *
 
 
 @_driver.on_startup
