@@ -1,0 +1,887 @@
+{'id': 141863815, 'contestId': 1623, 'creationTimeSeconds': 1641509122, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1623, 'index': 'E', 'name': 'Middle Duplication', 'type': 'PROGRAMMING', 'points': 2750.0, 'rating': 2500, 'tags': ['data structures', 'dfs and similar', 'greedy', 'strings', 'trees'
+        ]
+    }, 'author': {'contestId': 1623, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1640698500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'COMPILATION_ERROR', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 0
+},
+{'id': 141863721, 'contestId': 1618, 'creationTimeSeconds': 1641508811, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1618, 'index': 'C', 'name': 'Paint the Array', 'type': 'PROGRAMMING', 'rating': 1100, 'tags': ['math'
+        ]
+    }, 'author': {'contestId': 1618, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1639492500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 7, 'timeConsumedMillis': 31, 'memoryConsumedBytes': 307200
+},
+{'id': 141863717, 'contestId': 1618, 'creationTimeSeconds': 1641508790, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1618, 'index': 'B', 'name': 'Missing Bigram', 'type': 'PROGRAMMING', 'rating': 800, 'tags': ['implementation'
+        ]
+    }, 'author': {'contestId': 1618, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1639492500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'RUNTIME_ERROR', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 307200
+},
+{'id': 141863595, 'contestId': 103496, 'creationTimeSeconds': 1641508462, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 103496, 'index': 'A', 'name': 'Alice, Bob, and Cindy, and Dani', 'type': 'PROGRAMMING', 'points': 100.0, 'tags': []
+    }, 'author': {'contestId': 103496, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1640599200
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'COMPILATION_ERROR', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 0, 'points': 0.0
+},
+{'id': 140559071, 'contestId': 1615, 'creationTimeSeconds': 1640423058, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1615, 'index': 'C', 'name': 'Menorah', 'type': 'PROGRAMMING', 'points': 1750.0, 'rating': 1600, 'tags': ['brute force', 'graphs', 'greedy', 'math'
+        ]
+    }, 'author': {'contestId': 1615, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1640356500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 14, 'timeConsumedMillis': 62, 'memoryConsumedBytes': 512000
+},
+{'id': 139398743, 'contestId': 1618, 'creationTimeSeconds': 1639576441, 'relativeTimeSeconds': 1741, 'problem': {'contestId': 1618, 'index': 'D', 'name': 'Array and Operations', 'type': 'PROGRAMMING', 'rating': 1300, 'tags': ['dp', 'greedy', 'math'
+        ]
+    }, 'author': {'contestId': 1618, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1639574700
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 50, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 307200
+},
+{'id': 139398368, 'contestId': 1618, 'creationTimeSeconds': 1639576229, 'relativeTimeSeconds': 1529, 'problem': {'contestId': 1618, 'index': 'C', 'name': 'Paint the Array', 'type': 'PROGRAMMING', 'rating': 1100, 'tags': ['math'
+        ]
+    }, 'author': {'contestId': 1618, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1639574700
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 7, 'timeConsumedMillis': 30, 'memoryConsumedBytes': 307200
+},
+{'id': 139398182, 'contestId': 1618, 'creationTimeSeconds': 1639576128, 'relativeTimeSeconds': 1428, 'problem': {'contestId': 1618, 'index': 'C', 'name': 'Paint the Array', 'type': 'PROGRAMMING', 'rating': 1100, 'tags': ['math'
+        ]
+    }, 'author': {'contestId': 1618, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1639574700
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 307200
+},
+{'id': 139397544, 'contestId': 1618, 'creationTimeSeconds': 1639575764, 'relativeTimeSeconds': 1064, 'problem': {'contestId': 1618, 'index': 'B', 'name': 'Missing Bigram', 'type': 'PROGRAMMING', 'rating': 800, 'tags': ['implementation'
+        ]
+    }, 'author': {'contestId': 1618, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1639574700
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 3, 'timeConsumedMillis': 31, 'memoryConsumedBytes': 307200
+},
+{'id': 139396497, 'contestId': 1618, 'creationTimeSeconds': 1639575167, 'relativeTimeSeconds': 467, 'problem': {'contestId': 1618, 'index': 'A', 'name': 'Polycarp and Sums of Subsequences', 'type': 'PROGRAMMING', 'rating': 800, 'tags': ['math', 'sortings'
+        ]
+    }, 'author': {'contestId': 1618, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1639574700
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 28, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 307200
+},
+{'id': 139396394, 'contestId': 1618, 'creationTimeSeconds': 1639575107, 'relativeTimeSeconds': 407, 'problem': {'contestId': 1618, 'index': 'A', 'name': 'Polycarp and Sums of Subsequences', 'type': 'PROGRAMMING', 'rating': 800, 'tags': ['math', 'sortings'
+        ]
+    }, 'author': {'contestId': 1618, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1639574700
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 307200
+},
+{'id': 139396209, 'contestId': 1618, 'creationTimeSeconds': 1639574996, 'relativeTimeSeconds': 296, 'problem': {'contestId': 1618, 'index': 'A', 'name': 'Polycarp and Sums of Subsequences', 'type': 'PROGRAMMING', 'rating': 800, 'tags': ['math', 'sortings'
+        ]
+    }, 'author': {'contestId': 1618, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1639574700
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 307200
+},
+{'id': 137896302, 'contestId': 1613, 'creationTimeSeconds': 1638542777, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1613, 'index': 'E', 'name': 'Crazy Robot', 'type': 'PROGRAMMING', 'rating': 2000, 'tags': ['dfs and similar', 'graphs'
+        ]
+    }, 'author': {'contestId': 1613, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1638369300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 20, 'timeConsumedMillis': 171, 'memoryConsumedBytes': 40448000
+},
+{'id': 137884697, 'contestId': 1613, 'creationTimeSeconds': 1638536016, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1613, 'index': 'D', 'name': 'MEX Sequences', 'type': 'PROGRAMMING', 'rating': 1900, 'tags': ['dp', 'math'
+        ]
+    }, 'author': {'contestId': 1613, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1638369300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 32, 'timeConsumedMillis': 327, 'memoryConsumedBytes': 10342400
+},
+{'id': 137884286, 'contestId': 1613, 'creationTimeSeconds': 1638535767, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1613, 'index': 'D', 'name': 'MEX Sequences', 'type': 'PROGRAMMING', 'rating': 1900, 'tags': ['dp', 'math'
+        ]
+    }, 'author': {'contestId': 1613, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1638369300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 327, 'memoryConsumedBytes': 10342400
+},
+{'id': 137884269, 'contestId': 1613, 'creationTimeSeconds': 1638535755, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1613, 'index': 'D', 'name': 'MEX Sequences', 'type': 'PROGRAMMING', 'rating': 1900, 'tags': ['dp', 'math'
+        ]
+    }, 'author': {'contestId': 1613, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1638369300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 10342400
+},
+{'id': 137883962, 'contestId': 1613, 'creationTimeSeconds': 1638535554, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1613, 'index': 'D', 'name': 'MEX Sequences', 'type': 'PROGRAMMING', 'rating': 1900, 'tags': ['dp', 'math'
+        ]
+    }, 'author': {'contestId': 1613, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1638369300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 311, 'memoryConsumedBytes': 10342400
+},
+{'id': 137883941, 'contestId': 1613, 'creationTimeSeconds': 1638535542, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1613, 'index': 'D', 'name': 'MEX Sequences', 'type': 'PROGRAMMING', 'rating': 1900, 'tags': ['dp', 'math'
+        ]
+    }, 'author': {'contestId': 1613, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1638369300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 10240000
+},
+{'id': 137350741, 'contestId': 1609, 'creationTimeSeconds': 1638198246, 'relativeTimeSeconds': 4746, 'problem': {'contestId': 1609, 'index': 'D', 'name': 'Social Network', 'type': 'PROGRAMMING', 'points': 2000.0, 'rating': 1600, 'tags': ['dsu', 'graphs', 'greedy', 'implementation', 'trees'
+        ]
+    }, 'author': {'contestId': 1609, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1638193500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 37, 'timeConsumedMillis': 31, 'memoryConsumedBytes': 307200
+},
+{'id': 137348285, 'contestId': 1609, 'creationTimeSeconds': 1638196672, 'relativeTimeSeconds': 3172, 'problem': {'contestId': 1609, 'index': 'C', 'name': 'Complex Market Analysis', 'type': 'PROGRAMMING', 'points': 1500.0, 'rating': 1400, 'tags': ['binary search', 'dp', 'implementation', 'number theory', 'schedules', 'two pointers'
+        ]
+    }, 'author': {'contestId': 1609, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1638193500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 27, 'timeConsumedMillis': 61, 'memoryConsumedBytes': 7680000
+},
+{'id': 137348160, 'contestId': 1609, 'creationTimeSeconds': 1638196580, 'relativeTimeSeconds': 3080, 'problem': {'contestId': 1609, 'index': 'C', 'name': 'Complex Market Analysis', 'type': 'PROGRAMMING', 'points': 1500.0, 'rating': 1400, 'tags': ['binary search', 'dp', 'implementation', 'number theory', 'schedules', 'two pointers'
+        ]
+    }, 'author': {'contestId': 1609, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1638193500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 4, 'timeConsumedMillis': 46, 'memoryConsumedBytes': 6860800
+},
+{'id': 137344492, 'contestId': 1609, 'creationTimeSeconds': 1638194223, 'relativeTimeSeconds': 723, 'problem': {'contestId': 1609, 'index': 'B', 'name': 'William the Vigilant', 'type': 'PROGRAMMING', 'points': 1000.0, 'rating': 1100, 'tags': ['implementation', 'strings'
+        ]
+    }, 'author': {'contestId': 1609, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1638193500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 17, 'timeConsumedMillis': 280, 'memoryConsumedBytes': 409600
+},
+{'id': 137343663, 'contestId': 1609, 'creationTimeSeconds': 1638193681, 'relativeTimeSeconds': 181, 'problem': {'contestId': 1609, 'index': 'A', 'name': 'Divide and Multiply', 'type': 'PROGRAMMING', 'points': 500.0, 'rating': 900, 'tags': ['greedy', 'implementation', 'math', 'number theory'
+        ]
+    }, 'author': {'contestId': 1609, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1638193500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 3, 'timeConsumedMillis': 62, 'memoryConsumedBytes': 307200
+},
+{'id': 137043204, 'contestId': 1614, 'creationTimeSeconds': 1637935382, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1614, 'index': 'E', 'name': 'Divan and a Cottage', 'type': 'PROGRAMMING', 'points': 2750.0, 'rating': 2600, 'tags': ['binary search', 'data structures'
+        ]
+    }, 'author': {'contestId': 1614, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637925300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 6, 'timeConsumedMillis': 31, 'memoryConsumedBytes': 154316800
+},
+{'id': 137043138, 'contestId': 1614, 'creationTimeSeconds': 1637935354, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1614, 'index': 'E', 'name': 'Divan and a Cottage', 'type': 'PROGRAMMING', 'points': 2750.0, 'rating': 2600, 'tags': ['binary search', 'data structures'
+        ]
+    }, 'author': {'contestId': 1614, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637925300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 154316800
+},
+{'id': 137042400, 'contestId': 1614, 'creationTimeSeconds': 1637935081, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1614, 'index': 'E', 'name': 'Divan and a Cottage', 'type': 'PROGRAMMING', 'points': 2750.0, 'rating': 2600, 'tags': ['binary search', 'data structures'
+        ]
+    }, 'author': {'contestId': 1614, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637925300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 5, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 154316800
+},
+{'id': 137042106, 'contestId': 1614, 'creationTimeSeconds': 1637934976, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1614, 'index': 'E', 'name': 'Divan and a Cottage', 'type': 'PROGRAMMING', 'points': 2750.0, 'rating': 2600, 'tags': ['binary search', 'data structures'
+        ]
+    }, 'author': {'contestId': 1614, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637925300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 6, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 154316800
+},
+{'id': 137041978, 'contestId': 1614, 'creationTimeSeconds': 1637934935, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1614, 'index': 'E', 'name': 'Divan and a Cottage', 'type': 'PROGRAMMING', 'points': 2750.0, 'rating': 2600, 'tags': ['binary search', 'data structures'
+        ]
+    }, 'author': {'contestId': 1614, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637925300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 154316800
+},
+{'id': 137041767, 'contestId': 1614, 'creationTimeSeconds': 1637934868, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1614, 'index': 'E', 'name': 'Divan and a Cottage', 'type': 'PROGRAMMING', 'points': 2750.0, 'rating': 2600, 'tags': ['binary search', 'data structures'
+        ]
+    }, 'author': {'contestId': 1614, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637925300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 4, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 154316800
+},
+{'id': 137041679, 'contestId': 1614, 'creationTimeSeconds': 1637934844, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1614, 'index': 'E', 'name': 'Divan and a Cottage', 'type': 'PROGRAMMING', 'points': 2750.0, 'rating': 2600, 'tags': ['binary search', 'data structures'
+        ]
+    }, 'author': {'contestId': 1614, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637925300
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 154316800
+},
+{'id': 136962644, 'contestId': 103427, 'creationTimeSeconds': 1637903651, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 103427, 'index': 'J', 'name': 'Luggage Lock', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637463600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'TIME_LIMIT_EXCEEDED', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 1000, 'memoryConsumedBytes': 0
+},
+{'id': 136962534, 'contestId': 103427, 'creationTimeSeconds': 1637903523, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 103427, 'index': 'J', 'name': 'Luggage Lock', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637463600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'TIME_LIMIT_EXCEEDED', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 1000, 'memoryConsumedBytes': 0
+},
+{'id': 136831282, 'contestId': 103427, 'creationTimeSeconds': 1637843681, 'relativeTimeSeconds': 16181, 'problem': {'contestId': 103427, 'index': 'J', 'name': 'Luggage Lock', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 405, 'memoryConsumedBytes': 0
+},
+{'id': 136828229, 'contestId': 103427, 'creationTimeSeconds': 1637841451, 'relativeTimeSeconds': 13951, 'problem': {'contestId': 103427, 'index': 'H', 'name': 'Line Graph Matching', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 79, 'timeConsumedMillis': 187, 'memoryConsumedBytes': 20582400
+},
+{'id': 136827374, 'contestId': 103427, 'creationTimeSeconds': 1637840839, 'relativeTimeSeconds': 13339, 'problem': {'contestId': 103427, 'index': 'J', 'name': 'Luggage Lock', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 404, 'memoryConsumedBytes': 0
+},
+{'id': 136826208, 'contestId': 103427, 'creationTimeSeconds': 1637839943, 'relativeTimeSeconds': 12443, 'problem': {'contestId': 103427, 'index': 'H', 'name': 'Line Graph Matching', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 37, 'timeConsumedMillis': 124, 'memoryConsumedBytes': 18739200
+},
+{'id': 136823758, 'contestId': 103427, 'creationTimeSeconds': 1637838120, 'relativeTimeSeconds': 10620, 'problem': {'contestId': 103427, 'index': 'J', 'name': 'Luggage Lock', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 420, 'memoryConsumedBytes': 0
+},
+{'id': 136823711, 'contestId': 103427, 'creationTimeSeconds': 1637838087, 'relativeTimeSeconds': 10587, 'problem': {'contestId': 103427, 'index': 'J', 'name': 'Luggage Lock', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 0
+},
+{'id': 136822208, 'contestId': 103427, 'creationTimeSeconds': 1637836880, 'relativeTimeSeconds': 9380, 'problem': {'contestId': 103427, 'index': 'J', 'name': 'Luggage Lock', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 421, 'memoryConsumedBytes': 0
+},
+{'id': 136821446, 'contestId': 103427, 'creationTimeSeconds': 1637836329, 'relativeTimeSeconds': 8829, 'problem': {'contestId': 103427, 'index': 'J', 'name': 'Luggage Lock', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 389, 'memoryConsumedBytes': 0
+},
+{'id': 136821236, 'contestId': 103427, 'creationTimeSeconds': 1637836152, 'relativeTimeSeconds': 8652, 'problem': {'contestId': 103427, 'index': 'J', 'name': 'Luggage Lock', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 389, 'memoryConsumedBytes': 0
+},
+{'id': 136820767, 'contestId': 103427, 'creationTimeSeconds': 1637835766, 'relativeTimeSeconds': 8266, 'problem': {'contestId': 103427, 'index': 'J', 'name': 'Luggage Lock', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 390, 'memoryConsumedBytes': 0
+},
+{'id': 136818658, 'contestId': 103427, 'creationTimeSeconds': 1637834082, 'relativeTimeSeconds': 6582, 'problem': {'contestId': 103427, 'index': 'F', 'name': 'Encoded Strings I', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 48, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 6041600
+},
+{'id': 136817579, 'contestId': 103427, 'creationTimeSeconds': 1637833256, 'relativeTimeSeconds': 5756, 'problem': {'contestId': 103427, 'index': 'F', 'name': 'Encoded Strings I', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 3, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 6041600
+},
+{'id': 136816717, 'contestId': 103427, 'creationTimeSeconds': 1637832587, 'relativeTimeSeconds': 5087, 'problem': {'contestId': 103427, 'index': 'F', 'name': 'Encoded Strings I', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 3, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 1228800
+},
+{'id': 136815206, 'contestId': 103427, 'creationTimeSeconds': 1637831286, 'relativeTimeSeconds': 3786, 'problem': {'contestId': 103427, 'index': 'B', 'name': 'Bitwise Exclusive-OR Sequence', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 37, 'timeConsumedMillis': 655, 'memoryConsumedBytes': 7270400
+},
+{'id': 136815164, 'contestId': 103427, 'creationTimeSeconds': 1637831241, 'relativeTimeSeconds': 3741, 'problem': {'contestId': 103427, 'index': 'B', 'name': 'Bitwise Exclusive-OR Sequence', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 3, 'timeConsumedMillis': 46, 'memoryConsumedBytes': 3993600
+},
+{'id': 136813582, 'contestId': 103427, 'creationTimeSeconds': 1637829947, 'relativeTimeSeconds': 2447, 'problem': {'contestId': 103427, 'index': 'D', 'name': 'Cross the Maze', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 8, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 102400
+},
+{'id': 136811068, 'contestId': 103427, 'creationTimeSeconds': 1637827889, 'relativeTimeSeconds': 389, 'problem': {'contestId': 103427, 'index': 'E', 'name': 'Edward Gaming, the Champion', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103427, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            },
+            {'handle': 'yyyz904'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637827500
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 29, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 204800
+},
+{'id': 136742116, 'contestId': 1610, 'creationTimeSeconds': 1637759082, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1610, 'index': 'D', 'name': 'Not Quite Lee', 'type': 'PROGRAMMING', 'points': 2250.0, 'rating': 2000, 'tags': ['combinatorics', 'dp', 'math', 'number theory'
+        ]
+    }, 'author': {'contestId': 1610, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637678100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 10, 'timeConsumedMillis': 46, 'memoryConsumedBytes': 2662400
+},
+{'id': 136742094, 'contestId': 1610, 'creationTimeSeconds': 1637759062, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1610, 'index': 'D', 'name': 'Not Quite Lee', 'type': 'PROGRAMMING', 'points': 2250.0, 'rating': 2000, 'tags': ['combinatorics', 'dp', 'math', 'number theory'
+        ]
+    }, 'author': {'contestId': 1610, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637678100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 6656000
+},
+{'id': 136738995, 'contestId': 1610, 'creationTimeSeconds': 1637756977, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1610, 'index': 'C', 'name': 'Keshi Is Throwing a Party', 'type': 'PROGRAMMING', 'points': 1500.0, 'rating': 1600, 'tags': ['binary search', 'greedy'
+        ]
+    }, 'author': {'contestId': 1610, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637678100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 109, 'memoryConsumedBytes': 6656000
+},
+{'id': 136738973, 'contestId': 1610, 'creationTimeSeconds': 1637756963, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 1610, 'index': 'C', 'name': 'Keshi Is Throwing a Party', 'type': 'PROGRAMMING', 'points': 1500.0, 'rating': 1600, 'tags': ['binary search', 'greedy'
+        ]
+    }, 'author': {'contestId': 1610, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1637678100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 6656000
+},
+{'id': 135956471, 'contestId': 103415, 'creationTimeSeconds': 1637144008, 'relativeTimeSeconds': 17908, 'problem': {'contestId': 103415, 'index': 'J', 'name': 'Cafeteria', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'TIME_LIMIT_EXCEEDED', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 2500, 'memoryConsumedBytes': 399155200
+},
+{'id': 135956356, 'contestId': 103415, 'creationTimeSeconds': 1637143922, 'relativeTimeSeconds': 17822, 'problem': {'contestId': 103415, 'index': 'J', 'name': 'Cafeteria', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'TIME_LIMIT_EXCEEDED', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 2500, 'memoryConsumedBytes': 407756800
+},
+{'id': 135955390, 'contestId': 103415, 'creationTimeSeconds': 1637143133, 'relativeTimeSeconds': 17033, 'problem': {'contestId': 103415, 'index': 'J', 'name': 'Cafeteria', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'MEMORY_LIMIT_EXCEEDED', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 536883200
+},
+{'id': 135955334, 'contestId': 103415, 'creationTimeSeconds': 1637143083, 'relativeTimeSeconds': 16983, 'problem': {'contestId': 103415, 'index': 'J', 'name': 'Cafeteria', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'MEMORY_LIMIT_EXCEEDED', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 536883200
+},
+{'id': 135955263, 'contestId': 103415, 'creationTimeSeconds': 1637143024, 'relativeTimeSeconds': 16924, 'problem': {'contestId': 103415, 'index': 'J', 'name': 'Cafeteria', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'MEMORY_LIMIT_EXCEEDED', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 536883200
+},
+{'id': 135948904, 'contestId': 103415, 'creationTimeSeconds': 1637138617, 'relativeTimeSeconds': 12517, 'problem': {'contestId': 103415, 'index': 'F', 'name': 'Cactus', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 29, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 2355200
+},
+{'id': 135947544, 'contestId': 103415, 'creationTimeSeconds': 1637137697, 'relativeTimeSeconds': 11597, 'problem': {'contestId': 103415, 'index': 'F', 'name': 'Cactus', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 0
+},
+{'id': 135944747, 'contestId': 103415, 'creationTimeSeconds': 1637135713, 'relativeTimeSeconds': 9613, 'problem': {'contestId': 103415, 'index': 'C', 'name': 'Necklace', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 13, 'timeConsumedMillis': 623, 'memoryConsumedBytes': 17612800
+},
+{'id': 135939860, 'contestId': 103415, 'creationTimeSeconds': 1637132153, 'relativeTimeSeconds': 6053, 'problem': {'contestId': 103415, 'index': 'H', 'name': 'Three Integers', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 2, 'timeConsumedMillis': 888, 'memoryConsumedBytes': 0
+},
+{'id': 135939203, 'contestId': 103415, 'creationTimeSeconds': 1637131700, 'relativeTimeSeconds': 5600, 'problem': {'contestId': 103415, 'index': 'H', 'name': 'Three Integers', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 904, 'memoryConsumedBytes': 0
+},
+{'id': 135938391, 'contestId': 103415, 'creationTimeSeconds': 1637131079, 'relativeTimeSeconds': 4979, 'problem': {'contestId': 103415, 'index': 'H', 'name': 'Three Integers', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 888, 'memoryConsumedBytes': 0
+},
+{'id': 135937088, 'contestId': 103415, 'creationTimeSeconds': 1637130097, 'relativeTimeSeconds': 3997, 'problem': {'contestId': 103415, 'index': 'H', 'name': 'Three Integers', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 919, 'memoryConsumedBytes': 0
+},
+{'id': 135933950, 'contestId': 103415, 'creationTimeSeconds': 1637127501, 'relativeTimeSeconds': 1401, 'problem': {'contestId': 103415, 'index': 'I', 'name': 'Pudding Store', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103415, 'members': [
+            {'handle': 'yyyz904'
+            },
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 93610, 'teamName': '_Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1637126100
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 20, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 0
+},
+{'id': 134213486, 'contestId': 1607, 'creationTimeSeconds': 1635939593, 'relativeTimeSeconds': 4193, 'problem': {'contestId': 1607, 'index': 'G', 'name': 'Banquet Preparations 1', 'type': 'PROGRAMMING', 'rating': 2200, 'tags': ['greedy'
+        ]
+    }, 'author': {'contestId': 1607, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635935400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 10, 'timeConsumedMillis': 592, 'memoryConsumedBytes': 7987200
+},
+{'id': 134213453, 'contestId': 1607, 'creationTimeSeconds': 1635939580, 'relativeTimeSeconds': 4180, 'problem': {'contestId': 1607, 'index': 'G', 'name': 'Banquet Preparations 1', 'type': 'PROGRAMMING', 'rating': 2200, 'tags': ['greedy'
+        ]
+    }, 'author': {'contestId': 1607, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635935400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 7884800
+},
+{'id': 134213208, 'contestId': 1607, 'creationTimeSeconds': 1635939453, 'relativeTimeSeconds': 4053, 'problem': {'contestId': 1607, 'index': 'G', 'name': 'Banquet Preparations 1', 'type': 'PROGRAMMING', 'rating': 2200, 'tags': ['greedy'
+        ]
+    }, 'author': {'contestId': 1607, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635935400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'TIME_LIMIT_EXCEEDED', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 2000, 'memoryConsumedBytes': 7987200
+},
+{'id': 134211036, 'contestId': 1607, 'creationTimeSeconds': 1635938308, 'relativeTimeSeconds': 2908, 'problem': {'contestId': 1607, 'index': 'E', 'name': 'Robot on the Board 1', 'type': 'PROGRAMMING', 'rating': 1600, 'tags': ['implementation'
+        ]
+    }, 'author': {'contestId': 1607, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635935400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 10, 'timeConsumedMillis': 46, 'memoryConsumedBytes': 2560000
+},
+{'id': 134211005, 'contestId': 1607, 'creationTimeSeconds': 1635938295, 'relativeTimeSeconds': 2895, 'problem': {'contestId': 1607, 'index': 'E', 'name': 'Robot on the Board 1', 'type': 'PROGRAMMING', 'rating': 1600, 'tags': ['implementation'
+        ]
+    }, 'author': {'contestId': 1607, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635935400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 2560000
+},
+{'id': 134209138, 'contestId': 1607, 'creationTimeSeconds': 1635937271, 'relativeTimeSeconds': 1871, 'problem': {'contestId': 1607, 'index': 'D', 'name': 'Blue-Red Permutation', 'type': 'PROGRAMMING', 'rating': 1300, 'tags': ['greedy', 'math', 'sortings'
+        ]
+    }, 'author': {'contestId': 1607, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635935400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 13, 'timeConsumedMillis': 62, 'memoryConsumedBytes': 5427200
+},
+{'id': 134209116, 'contestId': 1607, 'creationTimeSeconds': 1635937258, 'relativeTimeSeconds': 1858, 'problem': {'contestId': 1607, 'index': 'D', 'name': 'Blue-Red Permutation', 'type': 'PROGRAMMING', 'rating': 1300, 'tags': ['greedy', 'math', 'sortings'
+        ]
+    }, 'author': {'contestId': 1607, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635935400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 3276800
+},
+{'id': 134207360, 'contestId': 1607, 'creationTimeSeconds': 1635936256, 'relativeTimeSeconds': 856, 'problem': {'contestId': 1607, 'index': 'C', 'name': 'Minimum Extraction', 'type': 'PROGRAMMING', 'rating': 1000, 'tags': ['brute force', 'sortings'
+        ]
+    }, 'author': {'contestId': 1607, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635935400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 15, 'timeConsumedMillis': 77, 'memoryConsumedBytes': 3174400
+},
+{'id': 134206967, 'contestId': 1607, 'creationTimeSeconds': 1635936003, 'relativeTimeSeconds': 603, 'problem': {'contestId': 1607, 'index': 'B', 'name': 'Odd Grasshopper', 'type': 'PROGRAMMING', 'rating': 900, 'tags': ['math'
+        ]
+    }, 'author': {'contestId': 1607, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635935400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 3, 'timeConsumedMillis': 30, 'memoryConsumedBytes': 1536000
+},
+{'id': 134206224, 'contestId': 1607, 'creationTimeSeconds': 1635935620, 'relativeTimeSeconds': 220, 'problem': {'contestId': 1607, 'index': 'A', 'name': 'Linear Keyboard', 'type': 'PROGRAMMING', 'rating': 800, 'tags': ['implementation', 'strings'
+        ]
+    }, 'author': {'contestId': 1607, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635935400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 4, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 1536000
+},
+{'id': 134201949, 'contestId': 102823, 'creationTimeSeconds': 1635932993, 'relativeTimeSeconds': 14393, 'problem': {'contestId': 102823, 'index': 'A', 'name': 'Array Merge', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 30, 'memoryConsumedBytes': 3072000
+},
+{'id': 134201921, 'contestId': 102823, 'creationTimeSeconds': 1635932977, 'relativeTimeSeconds': 14377, 'problem': {'contestId': 102823, 'index': 'A', 'name': 'Array Merge', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'COMPILATION_ERROR', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 0
+},
+{'id': 134201892, 'contestId': 102823, 'creationTimeSeconds': 1635932961, 'relativeTimeSeconds': 14361, 'problem': {'contestId': 102823, 'index': 'A', 'name': 'Array Merge', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 3072000
+},
+{'id': 134201822, 'contestId': 102823, 'creationTimeSeconds': 1635932928, 'relativeTimeSeconds': 14328, 'problem': {'contestId': 102823, 'index': 'A', 'name': 'Array Merge', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 3174400
+},
+{'id': 134201766, 'contestId': 102823, 'creationTimeSeconds': 1635932901, 'relativeTimeSeconds': 14301, 'problem': {'contestId': 102823, 'index': 'A', 'name': 'Array Merge', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 3072000
+},
+{'id': 134186431, 'contestId': 102823, 'creationTimeSeconds': 1635924228, 'relativeTimeSeconds': 5628, 'problem': {'contestId': 102823, 'index': 'J', 'name': 'Stone Game', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++17', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 2, 'timeConsumedMillis': 421, 'memoryConsumedBytes': 3481600
+},
+{'id': 134183245, 'contestId': 102823, 'creationTimeSeconds': 1635922326, 'relativeTimeSeconds': 3726, 'problem': {'contestId': 102823, 'index': 'H', 'name': 'Hamming Distance', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++17', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 5, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 1126400
+},
+{'id': 134182274, 'contestId': 102823, 'creationTimeSeconds': 1635921742, 'relativeTimeSeconds': 3142, 'problem': {'contestId': 102823, 'index': 'G', 'name': 'Greatest Common Divisor', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 3, 'timeConsumedMillis': 249, 'memoryConsumedBytes': 2355200
+},
+{'id': 134182088, 'contestId': 102823, 'creationTimeSeconds': 1635921627, 'relativeTimeSeconds': 3027, 'problem': {'contestId': 102823, 'index': 'G', 'name': 'Greatest Common Divisor', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 2355200
+},
+{'id': 134181353, 'contestId': 102823, 'creationTimeSeconds': 1635921071, 'relativeTimeSeconds': 2471, 'problem': {'contestId': 102823, 'index': 'G', 'name': 'Greatest Common Divisor', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 2355200
+},
+{'id': 134180876, 'contestId': 102823, 'creationTimeSeconds': 1635920728, 'relativeTimeSeconds': 2128, 'problem': {'contestId': 102823, 'index': 'G', 'name': 'Greatest Common Divisor', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'RUNTIME_ERROR', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 15, 'memoryConsumedBytes': 2355200
+},
+{'id': 134179857, 'contestId': 102823, 'creationTimeSeconds': 1635919906, 'relativeTimeSeconds': 1306, 'problem': {'contestId': 102823, 'index': 'D', 'name': 'Bits Reverse', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 102823, 'members': [
+            {'handle': 'CleverLarry'
+            },
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'teamId': 90270, 'teamName': 'Wablers tweet in daydream', 'ghost': False, 'startTimeSeconds': 1635918600
+    }, 'programmingLanguage': 'GNU C++17', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 2, 'timeConsumedMillis': 31, 'memoryConsumedBytes': 1126400
+},
+{'id': 133749676, 'contestId': 103366, 'creationTimeSeconds': 1635674046, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 103366, 'index': 'D', 'name': 'Character Distance', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1634954400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 3, 'timeConsumedMillis': 405, 'memoryConsumedBytes': 9523200
+},
+{'id': 133749533, 'contestId': 103366, 'creationTimeSeconds': 1635673969, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 103366, 'index': 'D', 'name': 'Character Distance', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1634954400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 3, 'timeConsumedMillis': 389, 'memoryConsumedBytes': 9523200
+},
+{'id': 133748839, 'contestId': 103366, 'creationTimeSeconds': 1635673547, 'relativeTimeSeconds': 2147483647, 'problem': {'contestId': 103366, 'index': 'D', 'name': 'Character Distance', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'PRACTICE', 'ghost': False, 'startTimeSeconds': 1634954400
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 3, 'timeConsumedMillis': 421, 'memoryConsumedBytes': 5529600
+},
+{'id': 133745200, 'contestId': 103366, 'creationTimeSeconds': 1635671405, 'relativeTimeSeconds': 17825, 'problem': {'contestId': 103366, 'index': 'D', 'name': 'Character Distance', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635653580
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 2, 'timeConsumedMillis': 452, 'memoryConsumedBytes': 5529600
+},
+{'id': 133744867, 'contestId': 103366, 'creationTimeSeconds': 1635671203, 'relativeTimeSeconds': 17623, 'problem': {'contestId': 103366, 'index': 'D', 'name': 'Character Distance', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635653580
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 2, 'timeConsumedMillis': 436, 'memoryConsumedBytes': 5529600
+},
+{'id': 133744721, 'contestId': 103366, 'creationTimeSeconds': 1635671121, 'relativeTimeSeconds': 17541, 'problem': {'contestId': 103366, 'index': 'D', 'name': 'Character Distance', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635653580
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 421, 'memoryConsumedBytes': 5529600
+},
+{'id': 133738454, 'contestId': 103366, 'creationTimeSeconds': 1635667556, 'relativeTimeSeconds': 13976, 'problem': {'contestId': 103366, 'index': 'F', 'name': 'Four Column Hanoi Tower', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635653580
+    }, 'programmingLanguage': 'Python 3', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 5, 'timeConsumedMillis': 108, 'memoryConsumedBytes': 4812800
+},
+{'id': 133737220, 'contestId': 103366, 'creationTimeSeconds': 1635666751, 'relativeTimeSeconds': 13171, 'problem': {'contestId': 103366, 'index': 'H', 'name': 'Hearthstone So Easy', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635653580
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'OK', 'testset': 'TESTS', 'passedTestCount': 13, 'timeConsumedMillis': 296, 'memoryConsumedBytes': 1536000
+},
+{'id': 133737141, 'contestId': 103366, 'creationTimeSeconds': 1635666706, 'relativeTimeSeconds': 13126, 'problem': {'contestId': 103366, 'index': 'H', 'name': 'Hearthstone So Easy', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635653580
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 1536000
+},
+{'id': 133737124, 'contestId': 103366, 'creationTimeSeconds': 1635666696, 'relativeTimeSeconds': 13116, 'problem': {'contestId': 103366, 'index': 'H', 'name': 'Hearthstone So Easy', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635653580
+    }, 'programmingLanguage': 'Python 3', 'verdict': 'COMPILATION_ERROR', 'testset': 'TESTS', 'passedTestCount': 0, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 0
+},
+{'id': 133736831, 'contestId': 103366, 'creationTimeSeconds': 1635666501, 'relativeTimeSeconds': 12921, 'problem': {'contestId': 103366, 'index': 'F', 'name': 'Four Column Hanoi Tower', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635653580
+    }, 'programmingLanguage': 'Python 3', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 3072, 'memoryConsumedBytes': 8089600
+},
+{'id': 133735938, 'contestId': 103366, 'creationTimeSeconds': 1635665929, 'relativeTimeSeconds': 12349, 'problem': {'contestId': 103366, 'index': 'F', 'name': 'Four Column Hanoi Tower', 'type': 'PROGRAMMING', 'tags': []
+    }, 'author': {'contestId': 103366, 'members': [
+            {'handle': 'paekae'
+            }
+        ], 'participantType': 'VIRTUAL', 'ghost': False, 'startTimeSeconds': 1635653580
+    }, 'programmingLanguage': 'GNU C++20 (64)', 'verdict': 'WRONG_ANSWER', 'testset': 'TESTS', 'passedTestCount': 1, 'timeConsumedMillis': 0, 'memoryConsumedBytes': 1638400
+}

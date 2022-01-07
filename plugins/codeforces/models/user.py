@@ -9,7 +9,7 @@ __all__ = []
 class User(Base):
     __tablename__ = "_plugin_codeforces_user"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     handle = Column(String, primary_key=True)
     now_rating = Column(Integer)
     max_rating = Column(Integer)
@@ -21,7 +21,7 @@ class User(Base):
 class BaseSubmission:
     __tablename__ = "_plugin_codeforces_submission_"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     submission_user = Column(String)
     submission_time = Column(BigInteger)
     contest_id = Column(Integer)
@@ -39,9 +39,8 @@ async def submission_table_by_name(name: str) -> BaseSubmission:
     base = declarative_base()
 
     class Submission(base, BaseSubmission):
-        pass
+        __tablename__ = bs
 
-    Submission.__tablename__ = bs
     async with AEngine.begin() as conn:
         await conn.run_sync(base.metadata.create_all)
 

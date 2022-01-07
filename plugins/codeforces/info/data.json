@@ -2,6 +2,44 @@
     "status": "OK",
     "result": [
         {
+            "id": 141863815,
+            "contestId": 1623,
+            "creationTimeSeconds": 1641509122,
+            "relativeTimeSeconds": 2147483647,
+            "problem": {
+                "contestId": 1623,
+                "index": "E",
+                "name": "Middle Duplication",
+                "type": "PROGRAMMING",
+                "points": 2750.0,
+                "rating": 2500,
+                "tags": [
+                    "data structures",
+                    "dfs and similar",
+                    "greedy",
+                    "strings",
+                    "trees"
+                ]
+            },
+            "author": {
+                "contestId": 1623,
+                "members": [
+                    {
+                        "handle": "paekae"
+                    }
+                ],
+                "participantType": "PRACTICE",
+                "ghost": false,
+                "startTimeSeconds": 1640698500
+            },
+            "programmingLanguage": "GNU C++20 (64)",
+            "verdict": "COMPILATION_ERROR",
+            "testset": "TESTS",
+            "passedTestCount": 0,
+            "timeConsumedMillis": 0,
+            "memoryConsumedBytes": 0
+        },
+        {
             "id": 141863721,
             "contestId": 1618,
             "creationTimeSeconds": 1641508811,
@@ -35356,36 +35394,6 @@
             "testset": "TESTS",
             "passedTestCount": 1,
             "timeConsumedMillis": 15,
-            "memoryConsumedBytes": 819200
-        },
-        {
-            "id": 93929856,
-            "contestId": 102569,
-            "creationTimeSeconds": 1601190130,
-            "relativeTimeSeconds": 3430,
-            "problem": {
-                "contestId": 102569,
-                "index": "B",
-                "name": "Bonuses on a Line",
-                "type": "PROGRAMMING",
-                "tags": []
-            },
-            "author": {
-                "contestId": 102569,
-                "members": [
-                    {
-                        "handle": "paekae"
-                    }
-                ],
-                "participantType": "VIRTUAL",
-                "ghost": false,
-                "startTimeSeconds": 1601186700
-            },
-            "programmingLanguage": "GNU C++11",
-            "verdict": "WRONG_ANSWER",
-            "testset": "TESTS",
-            "passedTestCount": 1,
-            "timeConsumedMillis": 0,
             "memoryConsumedBytes": 819200
         }
     ]
