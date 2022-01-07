@@ -5,6 +5,7 @@
 .env.prod
 docker-compose.yml
 Dockerfile
+*.sqlite
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
