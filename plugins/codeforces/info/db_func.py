@@ -27,8 +27,8 @@ async def update_info(handle: str, force: bool = False) -> None:
     """
     # * 更新最小时间间隔
     dt = 600
+    session = ASession()
     try:
-        session = ASession()
         res: User = (
             (await session.execute(select(User).where(User.handle == handle).limit(1)))
             .scalars()
@@ -54,9 +54,9 @@ async def update_info(handle: str, force: bool = False) -> None:
         await session.close()
 
 
-async def update_problem(dict: Dict[str, Any]) -> int:
+async def update_problem(dict: Dict[str, Any]):
+    session = ASession()
     try:
-        session = ASession()
         src = Problem(**(problem(**dict).dict()))
         await session.merge(src)
         await session.commit()
@@ -76,8 +76,8 @@ async def update_submissions(handle: str, days: int = 30) -> None:
 
     await update_info(handle)
     tab = await get_submission_table_by_name(handle)
+    session = ASession()
     try:
-        session = ASession()
         newest: BaseSubmission = (
             (await session.execute(select(tab).order_by(desc(tab.id)).limit(1)))
             .scalars()
@@ -121,8 +121,8 @@ async def update_submissions(handle: str, days: int = 30) -> None:
 async def update_rating_list(handle: str):
     # TODO : 优化
     res = await get_rating_list(handle)
+    session = ASession()
     try:
-        session = ASession()
 
         for i in res:
             await session.merge(RatingChange(**ratingch(**i).dict()))
@@ -136,8 +136,8 @@ async def update_rating_list(handle: str):
 async def update_contest(handle: str):
     # TODO : 优化
     res = await get_contest_list(handle)
+    session = ASession()
     try:
-        session = ASession()
         for i in res:
             await session.merge(Contest(**contest(**i).dict()))
         await session.commit()

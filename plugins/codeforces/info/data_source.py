@@ -354,7 +354,7 @@ async def get_contest_list(handle: str) -> List[Dict[str, Any]]:
     return res["result"]
 
 
-async def download_img(url: str, path: Optional[str] = None) -> Union[None, bytes]:
+async def download_img(url: str, path: Optional[str] = None) -> bytes:
     # TODO : 代理改掉
     conn = httpx.AsyncClient(proxies="http://192.168.137.1:7777")
     try:
@@ -365,8 +365,8 @@ async def download_img(url: str, path: Optional[str] = None) -> Union[None, byte
         if path != None:
             with open(path, "wb") as f:
                 f.write(r.content)
-        else:
-            return r.content
+
+        return r.content
 
     except Exception as e:
         raise

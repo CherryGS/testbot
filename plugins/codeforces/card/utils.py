@@ -1,14 +1,14 @@
-from typing import List, Optional, Text, Tuple, Union
+from functools import cached_property, cache
+from typing import Any, List, Optional, Tuple, Union
 
+import colored
+from colored import stylize
 from PIL import Image as Img
 from PIL import ImageFont as ImgFont
 from PIL.Image import Image
 from PIL.ImageDraw import ImageDraw
 from PIL.ImageFont import FreeTypeFont
 from pydantic.color import Color
-from pydantic import BaseModel
-import colored
-from colored import stylize
 
 __all__ = [
     "t_colors",
@@ -19,6 +19,82 @@ __all__ = [
 ]
 t_colors = List[Color]
 t_text = str
+
+
+class ColorString:
+    class Config:
+        keep_untouched = (cached_property,)
+
+    def __init__(self, text, color=[Color("#000000")], fmt: bool = True) -> None:
+        self.text = self._check_text(text)
+        self.color = self._check_color(color)
+        if fmt is True:
+            self.format()
+
+    @staticmethod
+    def _check_text(v):
+        return str(v)
+
+    @staticmethod
+    def _check_color(v):
+        _res = []
+        if isinstance(v, Color):
+            return [v]
+        if isinstance(v, str):
+            return [Color(v)]
+        for i in v:
+            if not isinstance(i, Color):
+                i = Color(i)
+            _res.append(i)
+        return _res
+
+    def format(self):
+        """重整颜色使得颜色与字符串长度相等
+        
+        颜色多则截掉多余的 , 否则补为最后一种颜色
+        """
+        (self.text, self.color) = self.content
+
+    @cached_property
+    def content(self) -> Tuple[t_text, t_colors]:
+        """返回重整结果 , 但不应用
+        """
+        le1 = len(self.text)
+        le2 = len(self.color)
+        if le1 == le2:
+            return (self.text, self.color)
+
+        if le1 < le2:
+            color = self.color[:le1]
+        else:
+            color = self.color + [self.color[-1] for _ in range(le1 - le2)]
+
+        return (self.text, color)
+
+    def __len__(self) -> int:
+        """返回字符串长度
+        """
+        return self.text.__len__()
+
+    def __add__(self, other):
+        return ColorString(
+            text=(self.text + other.text), color=(self.color + other.color)
+        )
+
+    def __str__(self):
+        msg = ""
+        (txt, col) = self.content
+        for i, j in zip(txt, col):
+            msg += "({},{})".format(i, j.as_hex())
+        return msg
+
+    def print(self, bg: Color = Color("#ffffff")):
+        """尝试打印(with color)
+        """
+        (txt, col) = self.content
+        for i, j in zip(txt, col):
+            print(stylize(i, colored.fg(j.as_hex()) + colored.bg(bg.as_hex())), end="")
+        print()
 
 
 def paste_updown(img1: Image, img2: Image, loc: Tuple[float, float] = (0, 0)) -> Image:
@@ -59,92 +135,33 @@ def paste_updown(img1: Image, img2: Image, loc: Tuple[float, float] = (0, 0)) ->
 
 def text_colors(
     draw: ImageDraw,
-    text: str,
+    text: ColorString,
     font: Union[Tuple[str, int], FreeTypeFont],
     loc: Tuple[float, float] = (0, 0),
-    colors: t_colors = [Color("#000000")],
 ) -> None:
     """绘制一行具有多个颜色的字符串 , (空格占位置不上色)
     Args:
         `draw` : ImageDraw 实例 , 用来绘制的对象
-        `text` : 文字 , 会尝试调用 `str` 方法
+        `text` : `ColorString` 类 , 包含文字和颜色
         `fonttype` : 字体文件
         `fontsize` : 字体大小
         `loc` : 位置. 
         `colors` : 颜色字符串(列表) , 按照列表一对一绘制颜色 , 如果长度小于文字长度多余部分会绘制最后一种颜色. 
         `font` : ImageFont 实例. 
     """
-    text = str(text)
 
     if isinstance(font, tuple):
         font = ImgFont.truetype(font[0], font[1])
+    (t, c) = text.content
 
-    le1 = len(colors)
-    le2 = len(text)
-    if le1 < le2:
-        draw.text(loc, text, colors[-1].as_hex(), font=font)
-        le1 -= 1
-    k = range(min(le1, le2) - 1, -1, -1)
-    for i in k:
-        draw.text(loc, text[: i + 1], colors[i].as_hex(), font=font)
-
-
-class ColorString(BaseModel):
-
-    text: t_text
-    color: t_colors = [Color("#000000")]
-
-    def re_make(self):
-        """重整颜色使得颜色与字符串长度相等
-        
-        颜色多则截掉多余的 , 否则补为最后一种颜色
-        """
-        (self.text, self.color) = self.make()
-
-    def make(self) -> Tuple[t_text, t_colors]:
-        """返回重整结果 , 但不应用
-        """
-        le1 = len(self.text)
-        le2 = len(self.color)
-        if le1 == le2:
-            return (self.text, self.color)
-
-        if le1 < le2:
-            color = self.color[:le1]
-        else:
-            color = self.color + [self.color[-1] for _ in range(le1 - le2)]
-
-        return (self.text, color)
-
-    @property
-    def content(self) -> Tuple[t_text, t_colors]:
-        """返回内容 , 不重整(颜色变为 hex)
-        """
-        return self.make()
-
-    def __len__(self) -> int:
-        """返回字符串长度
-        """
-        return self.text.__len__()
-
-    def __add__(self, other):
-        return ColorString(
-            text=(self.text + other.text), color=(self.color + other.color)
-        )
-
-    def print(self, bg: Color = Color("#ffffff")):
-        """尝试打印(with color)
-        """
-        (txt, col) = self.make()
-        for i, j in zip(txt, col):
-            print(stylize(i, colored.fg(j.as_hex()) + colored.bg(bg.as_hex())), end="")
-        print()
+    for i in range(len(c) - 1, -1, -1):
+        draw.text(loc, t[: i + 1], c[i].as_hex(), font=font)
 
 
 if __name__ == "__main__":
     tour = ColorString(text="tour", color=["#000000", "#a10703"])
     ist = ColorString(text="ist", color=["#000000"])
-    tour.re_make()
+    tour.format()
     res = tour + ist
+    print(res)
     res.print()
-    print(res.content)
