@@ -6,13 +6,12 @@ from sqlalchemy.orm.decl_api import declarative_base
 from .config import DBSettings
 from nonebot.log import logger
 
-__all__ = ["AEngine", "ASession"]
 _driver = get_driver()
 _conf = DBSettings(**_driver.config.dict())
-Base = declarative_base()
+_Base = declarative_base()
 
 
-AEngine: AsyncEngine = None
+AEngine: AsyncEngine
 
 _link = "sqlite+aiosqlite:///_my_plugin_codeforces.db"
 if not _conf.plugin_codeforces_db:
@@ -31,7 +30,6 @@ if not AEngine:
         _link, pool_recycle=3600, echo=_conf.debug, future=True,
     )
 
-ASession: sessionmaker = None
 ASession = sessionmaker(AEngine, expire_on_commit=False, class_=AsyncSession)
 
 
@@ -41,5 +39,5 @@ from .cf_info import *
 @_driver.on_startup
 async def _():
     async with AEngine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+        await conn.run_sync(_Base.metadata.create_all)
 

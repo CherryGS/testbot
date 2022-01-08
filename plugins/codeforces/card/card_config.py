@@ -1,4 +1,5 @@
 from typing import Any, Dict
+from pydantic import BaseSettings
 
 
 month_card: Dict[Any, Any] = {
@@ -22,12 +23,12 @@ month_card: Dict[Any, Any] = {
             "font": ("src/font/verdana.ttf", 50),
             "loca": (1920 - 590 + 13, 799 - 13),
         },
-        "virtual_parti": {
+        "max_rating_change": {
             "font": ("src/font/verdana.ttf", 50),
-            "loca": (1920 - 617 + 13, 891 - 13),
+            "loca": (1920 - 672 + 13, 891 - 7),
         },
-        "time1": {"font": ("src/font/verdana.ttf", 50), "loca": (162, 847)},
-        "time2": {"font": ("src/font/verdana.ttf", 50), "loca": (195, 947)},
+        "time1": {"font": ("src/font/verdana.ttf", 50), "loca": (160, 816)},
+        "time2": {"font": ("src/font/verdana.ttf", 50), "loca": (196, 902)},
     },
 }
 

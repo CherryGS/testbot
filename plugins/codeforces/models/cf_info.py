@@ -1,12 +1,23 @@
 from typing import Dict
+from sqlalchemy.orm import relationship
+
 from sqlalchemy.orm.decl_api import declarative_base
-from sqlalchemy.sql import functions as func
 from sqlalchemy.sql.schema import Column, ForeignKey
-from sqlalchemy.sql.sqltypes import BigInteger, Date, Float, Integer, String, DateTime
-from . import Base, AEngine
+from sqlalchemy.sql.sqltypes import BigInteger, Float, Integer, String
+from functools import lru_cache
+from . import AEngine, _Base
+
+__all__ = [
+    "User",
+    "Problem",
+    "BaseSubmission",
+    "get_submission_table_by_name",
+    "RatingChange",
+    "Contest",
+]
 
 
-class User(Base):
+class User(_Base):
     __tablename__ = "_plugin_codeforces_user"
 
     handle = Column(String, primary_key=True)
@@ -19,7 +30,7 @@ class User(Base):
     __mapper_args__ = {"eager_defaults": True}
 
 
-class Problem(Base):
+class Problem(_Base):
     __tablename__ = "_plugin_codeforces_problem"
 
     contest_id = Column(Integer, primary_key=True)
@@ -34,16 +45,17 @@ class BaseSubmission:
 
     id = Column(Integer, primary_key=True, autoincrement=False)
     submission_time = Column(BigInteger)
-    verdict = Column(Integer)
-    parti_type = Column(Integer)
+    verdict = Column(String)
+    parti_type = Column(String)
     contest_id = Column(Integer)
-    problem_index = Column(Integer)
+    problem_index = Column(String)
     problem_name = Column(String)
+    # problem = relationship("Problem", backref="prob")
 
     __mapper_args__ = {"eager_defaults": True}
 
 
-_table: Dict[str, BaseSubmission] = dict()
+_tab = dict()
 
 
 async def get_submission_table_by_name(name: str) -> BaseSubmission:
@@ -56,12 +68,12 @@ async def get_submission_table_by_name(name: str) -> BaseSubmission:
     Returns:
         BaseSubmission: [description]
     """
-    global _table
+    global _tab
+
+    if name in _tab.keys():
+        return _tab[name]
 
     bs = "_plugin_codeforces_submission_" + name
-
-    if bs in _table.keys():
-        return _table[bs]
 
     base = declarative_base()
 
@@ -71,6 +83,28 @@ async def get_submission_table_by_name(name: str) -> BaseSubmission:
     async with AEngine.begin() as conn:
         await conn.run_sync(base.metadata.create_all)
 
-    _table[bs] = Submission
+    _tab[name] = Submission
 
     return Submission
+
+
+class RatingChange(_Base):
+    __tablename__ = "_plugin_codeforces_ratingch"
+
+    handle = Column(String, primary_key=True)
+    contest_id = Column(Integer, primary_key=True)
+    name = Column(String)
+    rank = Column(Integer)
+    old_rating = Column(Integer)
+    new_rating = Column(Integer)
+    time_second = Column(BigInteger)
+    last_updated = Column(BigInteger)
+
+
+class Contest(_Base):
+    __tablename__ = "_plugin_codeforces_contest"
+
+    contest_id = Column(Integer, primary_key=True)
+    name = Column(String)
+    start_time = Column(BigInteger)
+    last_updated = Column(BigInteger)

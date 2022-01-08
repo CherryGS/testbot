@@ -1,4 +1,5 @@
 {{! Google Docstring Template }}
+
 {{summaryPlaceholder}}
 
 {{extendedSummaryPlaceholder}}
@@ -6,30 +7,30 @@
 {{#parametersExist}}
 Args:
 {{#args}}
-    {{`var`}} ({{typePlaceholder}}): {{descriptionPlaceholder}}
+    `{{var}}` : {{descriptionPlaceholder}}
 {{/args}}
 {{#kwargs}}
-    {{var}} ({{typePlaceholder}}, optional): {{descriptionPlaceholder}}. Defaults to {{&default}}.
+    `{{var}}` : {{descriptionPlaceholder}}
 {{/kwargs}}
 {{/parametersExist}}
 
 {{#exceptionsExist}}
 Raises:
 {{#exceptions}}
-    {{type}}: {{descriptionPlaceholder}}
+    `{{type}}`: {{descriptionPlaceholder}}
 {{/exceptions}}
 {{/exceptionsExist}}
 
 {{#returnsExist}}
 Returns:
 {{#returns}}
-    {{typePlaceholder}}: {{descriptionPlaceholder}}
+    `{{typePlaceholder}}`: {{descriptionPlaceholder}}
 {{/returns}}
 {{/returnsExist}}
 
 {{#yieldsExist}}
 Yields:
 {{#yields}}
-    {{typePlaceholder}}: {{descriptionPlaceholder}}
+    `{{typePlaceholder}}`: {{descriptionPlaceholder}}
 {{/yields}}
 {{/yieldsExist}}

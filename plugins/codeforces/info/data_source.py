@@ -1,5 +1,6 @@
+# TODO : 考虑时区问题
 import asyncio
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 
 import httpx
 import orjson as js
@@ -14,10 +15,16 @@ __all__ = [
     "get_submissions_before",
     "get_submissions_days",
     "get_submissions_days_from",
+    "get_rating_list",
+    "get_contest_list",
+    "download_img",
 ]
 
 _USER_INFO = "https://codeforces.com/api/user.info?handles={}"
 _USER_STATUS = "https://codeforces.com/api/user.status?handle={}&from={}&count={}"
+_RATING_CHANGE = "https://codeforces.com/api/user.rating?handle={}"
+_CONTEST = "https://codeforces.com/api/contest.list"
+
 
 async def get_user_info(handle: str) -> Dict:
     """获取用户总体信息
@@ -32,9 +39,9 @@ async def get_user_info(handle: str) -> Dict:
         dict: 信息
     """
     url = _USER_INFO.format(handle)
+    # TODO : 代理改掉
+    conn = httpx.AsyncClient(proxies="http://192.168.137.1:7777")
     try:
-        # TODO : 代理改掉
-        conn = httpx.AsyncClient(proxies="http://192.168.137.1:7777")
         res = js.loads((await conn.get(url)).text)
         if res["status"] != "OK":
             raise QueryError(res["comment"])
@@ -63,25 +70,26 @@ async def _get_submissions(
     """
     url = _USER_STATUS.format(handle, f, count)
 
+    # TODO : 代理改掉
+    conn = httpx.AsyncClient(proxies="http://192.168.137.1:7777")
     try:
-        # TODO : 代理改掉
-        conn = httpx.AsyncClient(proxies="http://192.168.137.1:7777")
 
         try:
             r = await conn.get(url)
             res = js.loads(r.text)
         except Exception as e:
-            logger.opt(exception=e).error(str(r.text))
             raise
 
+        _cnt = 3
         while True:
+            _cnt -= 1
             if res["status"] == "OK":
                 break
             elif res["comment"] == "Call limit exceede":
-                asyncio.sleep(2)
+                await asyncio.sleep(2)
                 r = await conn.get(url)
                 res = js.loads(r.text)
-            else:
+            elif _cnt == 0:
                 raise QueryError(res["comment"])
 
     except:
@@ -143,7 +151,6 @@ async def _check(lis: List[Any], id: int) -> Union[int, None]:
     """
     if lis[0]["id"] < id or lis[-1]["id"] > id:
         return None
-
     # TODO : 换用二分(虽然不会快多少)
     for i in range(len(lis)):
         if lis[i]["id"] == id:
@@ -195,7 +202,7 @@ async def get_submissions_before(
     rnt = []
     if not force:
         # 倍增法
-        _cnt = 10
+        _cnt = 1
         _st = 0
         while True:
             lis = await get_submissions(handle, _st + 1, _cnt)
@@ -237,10 +244,10 @@ async def get_submissions_days(
     while True:
         res = await _get_submissions(handle, _cnt, 1)
         if not res or ((now - res[0]["creationTimeSeconds"]) / 3600 / 24 >= days):
-            k = await get_submissions(handle, 1, _cnt)
+            k = await get_submissions(handle, 1, _cnt + 1)
 
             for i in k:
-                if i["creationTimeSeconds"] >= now and (
+                if i["creationTimeSeconds"] <= now and (
                     (now - i["creationTimeSeconds"]) / 3600 / 24 <= days
                 ):
                     rnt.append(i)
@@ -273,11 +280,11 @@ async def get_submissions_days_from(
     while True:
         res = await _get_submissions(handle, _cnt, 1)
         if not res or ((now - res[0]["creationTimeSeconds"]) / 3600 / 24 >= days):
-            k = await get_submissions(handle, cnt - 10, _cnt - cnt + 10)
+            k = await get_submissions(handle, max(1, cnt - 10), _cnt - cnt + 10)
 
             for i in k:
                 if i["id"] < des_id:
-                    if i["creationTimeSeconds"] >= now and (
+                    if i["creationTimeSeconds"] <= now and (
                         (now - i["creationTimeSeconds"]) / 3600 / 24 <= days
                     ):
                         rnt.append(i)
@@ -285,6 +292,86 @@ async def get_submissions_days_from(
 
         _cnt <<= 3
     return rnt
+
+
+async def get_rating_list(handle: str) -> List[Dict[str, Any]]:
+    url = _RATING_CHANGE.format(handle)
+    # TODO : 代理改掉
+    conn = httpx.AsyncClient(proxies="http://192.168.137.1:7777")
+    try:
+        try:
+            r = await conn.get(url)
+            res = js.loads(r.text)
+        except Exception as e:
+            raise
+
+        _cnt = 3
+        while True:
+            _cnt -= 1
+            if res["status"] == "OK":
+                break
+            elif res["comment"] == "Call limit exceede":
+                await asyncio.sleep(2)
+                r = await conn.get(url)
+                res = js.loads(r.text)
+            elif _cnt == 0:
+                raise QueryError(res["comment"])
+    except Exception as e:
+        raise
+    finally:
+        await conn.aclose()
+
+    return res["result"]
+
+
+async def get_contest_list(handle: str) -> List[Dict[str, Any]]:
+    url = _CONTEST.format(handle)
+    # TODO : 代理改掉
+    conn = httpx.AsyncClient(proxies="http://192.168.137.1:7777")
+    try:
+        try:
+            r = await conn.get(url)
+            res = js.loads(r.text)
+        except Exception as e:
+            raise
+
+        _cnt = 3
+        while True:
+            _cnt -= 1
+            if res["status"] == "OK":
+                break
+            elif res["comment"] == "Call limit exceede":
+                await asyncio.sleep(2)
+                r = await conn.get(url)
+                res = js.loads(r.text)
+            elif _cnt == 0:
+                raise QueryError(res["comment"])
+    except Exception as e:
+        raise
+    finally:
+        await conn.aclose()
+
+    return res["result"]
+
+
+async def download_img(url: str, path: Optional[str] = None) -> Union[None, bytes]:
+    # TODO : 代理改掉
+    conn = httpx.AsyncClient(proxies="http://192.168.137.1:7777")
+    try:
+        try:
+            r = await conn.get(url)
+        except Exception as e:
+            raise
+        if path != None:
+            with open(path, "wb") as f:
+                f.write(r.content)
+        else:
+            return r.content
+
+    except Exception as e:
+        raise
+    finally:
+        await conn.aclose()
 
 
 if __name__ == "__main__":
