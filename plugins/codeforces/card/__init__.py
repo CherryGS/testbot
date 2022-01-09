@@ -15,7 +15,7 @@ from .utils import *
 
 _req = require("admin.nonebot_plugin_PCtrl")
 _cool = _req.coolen_matcher  # type: ignore
-_cmd1 = _cool(60, on_command("card", priority=2, permission=SUPERUSER))
+_cmd1 = _cool(60, on_command("card", priority=2))
 
 
 @_cmd1.handle()

@@ -96,21 +96,17 @@ async def update_submissions(handle: str, days: int = 30) -> None:
             res = await get_submissions_days(handle, time(), days)
 
         # ! Submission 更新之处 / Problem with
-        lis = []
         for i in res:
             k = submission(**i)
-            lis.append(
-                session.merge(
-                    tab(
-                        **k.dict(exclude={"problem", "author"}),
-                        problem_index=k.problem.problem_index,
-                        problem_name=k.problem.problem_name,
-                        parti_type=k.author.parti_type
-                    )
+            await session.merge(
+                tab(
+                    **k.dict(exclude={"problem", "author"}),
+                    problem_index=k.problem.problem_index,
+                    problem_name=k.problem.problem_name,
+                    parti_type=k.author.parti_type
                 )
             )
             await session.merge(Problem(**k.problem.dict()))
-        await asyncio.gather(*lis)
         await session.commit()
     except:
         raise

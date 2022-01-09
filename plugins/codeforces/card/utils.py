@@ -22,9 +22,6 @@ t_text = str
 
 
 class ColorString:
-    class Config:
-        keep_untouched = (cached_property,)
-
     def __init__(self, text, color=[Color("#000000")], fmt: bool = True) -> None:
         self.text = self._check_text(text)
         self.color = self._check_color(color)
@@ -146,7 +143,6 @@ def text_colors(
         `fonttype` : 字体文件
         `fontsize` : 字体大小
         `loc` : 位置. 
-        `colors` : 颜色字符串(列表) , 按照列表一对一绘制颜色 , 如果长度小于文字长度多余部分会绘制最后一种颜色. 
         `font` : ImageFont 实例. 
     """
 
