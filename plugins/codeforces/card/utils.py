@@ -98,9 +98,9 @@ def paste_updown(img1: Image, img2: Image, loc: Tuple[float, float] = (0, 0)) ->
     """把 img2 贴到 img1 下方 , 如果图片范围超出原图 , 多余部分会由空像素替代
 
     Args:
-        img1 (Image): [description]
-        img2 (Image): [description]
-        loc (Tuple[float, float], optional): 左上角位置. Defaults to (0, 0).
+        `img1` : [description]
+        `img2` : [description]
+        `loc` : 左上角位置.
     """
     tmp1 = Img.new(
         "RGBA",
