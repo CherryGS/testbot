@@ -1,5 +1,3 @@
-from nonebot.adapters.cqhttp import Bot
-from nonebot.adapters.cqhttp.event import Event
 from nonebot.log import logger
 from nonebot.matcher import Matcher
 from nonebot.message import event_preprocessor, run_preprocessor

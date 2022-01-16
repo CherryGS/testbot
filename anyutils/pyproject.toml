@@ -4,13 +4,17 @@ version = "0.1.0"
 description = ""
 authors = ["CherryGS <uplliode@gmail.com>"]
 license = "MIT"
+packages = [
+    { include = "anyutils", from = ".." }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pydantic = "^1.9.0"
+SQLAlchemy = "^1.4.29"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
-SQLAlchemy = "^1.4.29"
 aiosqlite = "^0.17.0"
 
 [build-system]
