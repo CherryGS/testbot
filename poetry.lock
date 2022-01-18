@@ -304,7 +304,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "nb-cli"
-version = "0.6.2"
+version = "0.6.4"
 description = "CLI for nonebot2"
 category = "dev"
 optional = false
@@ -1069,8 +1069,8 @@ multidict = [
     {file = "multidict-5.2.0.tar.gz", hash = "sha256:0dd1c93edb444b33ba2274b66f63def8a327d607c6c790772f448a53b6ea59ce"},
 ]
 nb-cli = [
-    {file = "nb-cli-0.6.2.tar.gz", hash = "sha256:2d3882b22ceb6f05b0461904f7c40c1ed5b6557c2eabdd44527aedb30dd85d04"},
-    {file = "nb_cli-0.6.2-py3-none-any.whl", hash = "sha256:ad3dc7e048e460dc756546581e2e40a0ab706890aae7a35ef3b6c689e6def095"},
+    {file = "nb-cli-0.6.4.tar.gz", hash = "sha256:9beffd96af65a5d9a7b2f56a70fe93be23546809b5c1bb07ca6b84eda3f214d4"},
+    {file = "nb_cli-0.6.4-py3-none-any.whl", hash = "sha256:7ed3d0e6023270be5bb1f55ad929a64f79158efd5b030adc1dd07739e8454ea1"},
 ]
 nonebot-adapter-cqhttp = [
     {file = "nonebot-adapter-cqhttp-2.0.0b1.tar.gz", hash = "sha256:57a27c5c6b47bd77dbaddaf063738c0548110424f559deca2e37654814f122d0"},

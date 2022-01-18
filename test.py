@@ -1,22 +1,14 @@
-import time
-from typing import List
+from typing import Optional
+from pydantic import BaseModel
 
-a: List[List[int]] = []
-b = [[1, 2, 3]]
 
-print(a, b)
+class test(BaseModel):
+    id: int
+    text: Optional[str] = None
 
-a = b
-print(a, b)
 
-a[0][0] = 2
+def r(**kw):
+    print(kw)
 
-print(a, b)
 
-a = b + [[1]]
-
-print(a, b)
-
-a[0][0] = 3
-
-print(a, b)
+print(r(**test(id=1).dict(exclude_unset=True)))
