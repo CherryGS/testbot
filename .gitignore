@@ -15,4 +15,4 @@ __pycache__/
 *.db
 
 dist
-securet.*
+secure.*
