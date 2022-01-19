@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any, Dict, Set
+from typing import Any, Dict, List, Set
 
 from loguru import logger
 from sqlalchemy.ext.asyncio import create_async_engine
@@ -25,11 +25,14 @@ class RegEngine:
     _link: Set[DBCfg]
     _used: Set[DBCfg]
 
-    def __init__(self, doc: str = "Default") -> None:
+    def __init__(
+        self, doc: str = "Default", lim: List[str] = ["sqlite", "postgresql"]
+    ) -> None:
         self.__doc__ = doc
         self._Engine = dict()
         self._link = set()
         self._used = set()
+        self.lim = lim
 
     def add(self, name: str, link: str, debug: bool = False, dupli: bool = True):
         """
@@ -72,6 +75,8 @@ class RegEngine:
                 echo=r.debug,
                 future=True,
             )
+            if self._Engine[r.name].dialect.name not in self.lim:
+                raise TypeError("暂不支持该数据库")
             msg = "引擎 {} 成功初始化".format(r.name)
             logger.debug(msg)
 
@@ -119,6 +124,8 @@ class RegEngine:
             else:
                 raise KeyError(msg)
         else:
+            if engine.dialect.name not in self.lim:
+                raise TypeError("暂不支持该数据库")
             msg = "成功添加引擎 {}".format(name)
             self._Engine[name] = engine
             logger.info(msg)

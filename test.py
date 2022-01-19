@@ -11,4 +11,6 @@ def r(**kw):
     print(kw)
 
 
-print(r(**test(id=1).dict(exclude_unset=True)))
+dic = {"res": 1}
+
+print(r(**dic, res=2))
