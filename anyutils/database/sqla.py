@@ -1,9 +1,21 @@
 from dataclasses import dataclass
-from typing import Any, Dict, List, Set
+from typing import Any, Dict, List, Literal, Set
 
 from loguru import logger
+from pydantic import BaseModel
+from sqlalchemy import Column
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.ext.asyncio.engine import AsyncEngine
+from sqlalchemy.orm.decl_api import declarative_base
+from typing_extensions import Self
+
+Base = declarative_base()
+export_conf = {"exclude_unset": True, "exclude_defaults": False, "exclude_none": True}
+
+
+class ModelConfig:
+    extra: Literal["ignore", "allow", "forbid"] = "ignore"
+    orm_mode: bool = True
 
 
 @dataclass
@@ -13,7 +25,6 @@ class DBCfg:
     debug: bool = False
 
     def __eq__(self, __o) -> bool:
-
         return self.name == __o.name
 
     def __hash__(self) -> int:
@@ -143,4 +154,92 @@ class RegEngine:
                 self.add_one(i[0], i[1], dupli)
 
 
-reg = RegEngine()
+class BsModel(BaseModel):
+    __primary_key__: set[str]
+    __sqla_model__: Base
+
+    @classmethod
+    def make_value(cls, stmt, ign=set(), all=set()) -> dict:
+        """
+        为 sqla 插入时 pk 重复时使用 on_conflict_update 更新定制
+
+        Args:
+            `stmt` : sqla 语句
+            `ign` : 忽视的列名 , 优先级高于允许
+            `all` : 允许的列名 , 优先级低于忽视
+
+        Raises:
+            `TypeError`: 忽视的列名中有不存在的时抛出
+
+        Returns:
+            `Dict`: `set_` 处使用的 `dict`
+        """
+        for i in ign:
+            if i not in cls.__sqla_model__.__dict__:
+                raise TypeError(f"忽视的列名{i}不存在!")
+        r = dict()
+        d = cls.__dict__["__fields__"].keys() if not all else all
+        for i in d:
+            if i not in cls.__primary_key__ and i not in ign:
+                r[i] = eval(f"stmt.excluded.{i}")
+        return r
+
+    @classmethod
+    def check_pk(cls, Model: Base) -> bool:
+        """
+        根据传入的 `model` 检查 `pk` 是否相等 , 如果相等将 `pk` 的 `name` 填入类集合
+
+        Args:
+            `Model` : [description]
+
+        Raises:
+            `TypeError`: `pk` 不相等时抛出
+
+        Returns:
+            `bool`: 如果执行了检查 , 返回 `True` 否则返回 `False`
+        """
+        cls.__sqla_model__ = Model
+        if cls.__primary_key__:
+            return False
+        for i in cls.schema()["properties"].items():
+            try:
+                a = i[1]["pk"]
+                if a == True:
+                    cls.__primary_key__.add(i[0])
+            except:
+                pass
+        s = set()
+        d = Model.__dict__
+        for i in d:
+            if not i.startswith("_") and d[i].primary_key is True:
+                s.add(i)
+        if s != cls.__primary_key__:
+            raise TypeError("PK 不完全相等")
+
+        return True
+
+    def __hash__(self):
+        return hash(tuple(self.dict(include=self.__primary_key__).values()))
+
+    def __eq__(self, other: Self):
+        return (
+            self.dict(include=self.__primary_key__).values()
+            == other.dict(include=other.__primary_key__).values()
+        )
+
+    class Config(ModelConfig):
+        pass
+
+
+def anywhere(stmt, data: set[tuple[Column[Any], Any]]):
+    """
+    将值非 `None` 的语句用 `where` 拼接上
+
+    比如 `data = ((User.id, 2), (User.name, None))` 会被配成
+
+    `stmt = stmt.where(User.id==2)`
+    """
+    for i in data:
+        if i[1] is not None:
+            stmt = stmt.where(i[0] == i[1])
+    return stmt
