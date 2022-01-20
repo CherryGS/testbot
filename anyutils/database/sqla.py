@@ -1,8 +1,8 @@
 from dataclasses import dataclass
-from typing import Any, Dict, List, Literal, Set
+from typing import Any, ClassVar, Dict, List, Literal, Set
 
 from loguru import logger
-from pydantic import BaseModel
+from pydantic import BaseModel, PrivateAttr
 from sqlalchemy import Column
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.ext.asyncio.engine import AsyncEngine
@@ -155,8 +155,8 @@ class RegEngine:
 
 
 class BsModel(BaseModel):
-    __primary_key__: set[str]
-    __sqla_model__: Base
+    __primary_key__: ClassVar[set[str]] = set()
+    __sqla_model__: ClassVar[Base]
 
     @classmethod
     def make_value(cls, stmt, ign=set(), all=set()) -> dict:
