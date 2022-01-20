@@ -4,8 +4,4 @@
     "python.linting.pydocstyleEnabled": true,
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.stubPath": "typing",
-    "yaml.schemas": {
-        "file:///toc.schema.json": "/toc\\.yml/i",
-        "https://json.schemastore.org/eslintrc.json": "file:///home/tickt/project/testbot/admin/nonebot_plugin_PCtrl/secure.yml"
-    }
 }
