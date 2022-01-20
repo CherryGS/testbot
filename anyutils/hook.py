@@ -10,6 +10,7 @@ class HookMaker:
     _hooked_sync: Set[Callable[..., Any]]
 
     def __init__(self, log: str = ""):
+        self.__doc__ = log
         self._log = log
         self._hooked_async = set()
         self._hooked_awai = set()

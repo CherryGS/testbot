@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "anyutils"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["CherryGS <uplliode@gmail.com>"]
 license = "MIT"
@@ -12,6 +12,7 @@ packages = [
 python = "^3.10"
 pydantic = "^1.9.0"
 SQLAlchemy = "^1.4.29"
+decorator = "^5.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

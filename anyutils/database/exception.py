@@ -1,4 +1,7 @@
-class DatabaseError(Exception):
+from ..exception import AnyUtilsError
+
+
+class DatabaseError(AnyUtilsError):
     pass
 
 

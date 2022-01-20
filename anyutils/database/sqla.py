@@ -159,14 +159,14 @@ class BsModel(BaseModel):
     __sqla_model__: ClassVar[Base]
 
     @classmethod
-    def make_value(cls, stmt, ign=set(), all=set()) -> dict:
+    def make_value(cls, stmt, ign=set(), all: set | None = None) -> dict:
         """
         为 sqla 插入时 pk 重复时使用 on_conflict_update 更新定制
 
         Args:
             `stmt` : sqla 语句
             `ign` : 忽视的列名 , 优先级高于允许
-            `all` : 允许的列名 , 优先级低于忽视
+            `all` : 允许的列名 , 优先级低于忽视 , 如果为默认值则选取所有
 
         Raises:
             `TypeError`: 忽视的列名中有不存在的时抛出
@@ -177,8 +177,12 @@ class BsModel(BaseModel):
         for i in ign:
             if i not in cls.__sqla_model__.__dict__:
                 raise TypeError(f"忽视的列名{i}不存在!")
+        if all:
+            for i in all:
+                if i not in cls.__sqla_model__.__dict__:
+                    raise TypeError(f"需要的列名{i}不存在!")
         r = dict()
-        d = cls.__dict__["__fields__"].keys() if not all else all
+        d = cls.__dict__["__fields__"].keys() if all is None else all
         for i in d:
             if i not in cls.__primary_key__ and i not in ign:
                 r[i] = eval(f"stmt.excluded.{i}")
@@ -201,12 +205,15 @@ class BsModel(BaseModel):
         cls.__sqla_model__ = Model
         if cls.__primary_key__:
             return False
+        else:
+            cls.__primary_key__ = set()
         for i in cls.schema()["properties"].items():
             try:
                 a = i[1]["pk"]
                 if a == True:
                     cls.__primary_key__.add(i[0])
             except:
+                print(i)
                 pass
         s = set()
         d = Model.__dict__
