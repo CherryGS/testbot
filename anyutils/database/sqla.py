@@ -213,7 +213,6 @@ class BsModel(BaseModel):
                 if a == True:
                     cls.__primary_key__.add(i[0])
             except:
-                print(i)
                 pass
         s = set()
         d = Model.__dict__
