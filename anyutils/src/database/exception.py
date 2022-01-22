@@ -27,7 +27,19 @@ class ModelError(Exception):
     """"""
 
 
-class PrimaryKeyNotEqualError(Exception):
+class PrimaryKeyNotEqualError(ModelError):
     """
     Model 与 sqlaOrm 定义的 PK 不相等时抛出
+    """
+
+
+class ColumnNotFoundError(ModelError):
+    """
+    找不到应该存在的列时抛出
+    """
+
+
+class ChangePrimaryKeyError(ModelError):
+    """
+    尝试构造修改 pk 的语句时抛出
     """

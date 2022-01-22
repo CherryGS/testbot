@@ -20,7 +20,7 @@ class BsModel(BaseModel):
     __sqla_model__: ClassVar[Base]
 
     @classmethod
-    def make_value(cls, stmt, ign=set(), all: set | None = None) -> dict:
+    def make_value(cls, stmt, ign: set = set(), all: set | None = None) -> dict:
         """
         为 sqla 插入时 pk 重复时使用 on_conflict_update 更新定制
 
@@ -37,15 +37,17 @@ class BsModel(BaseModel):
         """
         for i in ign:
             if i not in cls.__sqla_model__.__dict__:
-                raise TypeError(f"忽视的列名{i}不存在!")
+                raise ColumnNotFoundError(f"忽视的列名{i}不存在!")
         if all:
             for i in all:
                 if i not in cls.__sqla_model__.__dict__:
-                    raise TypeError(f"需要的列名{i}不存在!")
+                    raise ColumnNotFoundError(f"需要的列名{i}不存在!")
         r = dict()
         d = cls.__dict__["__fields__"].keys() if all is None else all
         for i in d:
-            if i not in cls.__primary_key__ and i not in ign:
+            if i in cls.__primary_key__:
+                raise ChangePrimaryKeyError(f"PK {i} can't be changed")
+            elif i not in ign:
                 r[i] = eval(f"stmt.excluded.{i}")
         return r
 

@@ -47,7 +47,3 @@ class TestRegEngine:
         reg._Engine["123"] = 4  # type: ignore
         with pytest.raises(TypeError):
             reg.get("123")
-
-
-class TestBsModel:
-    pass

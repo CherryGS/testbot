@@ -1,1 +1,1 @@
-python -m pytest --cov=src/ --cov-report=xml 
+python -m pytest --cov=src/ --cov-report=xml --dburl=sqlite+aiosqlite:///:memory:
