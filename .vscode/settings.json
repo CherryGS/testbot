@@ -4,4 +4,5 @@
     "python.linting.pydocstyleEnabled": true,
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.stubPath": "typing",
+    "python.analysis.diagnosticMode": "workspace",
 }

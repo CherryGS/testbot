@@ -2,7 +2,7 @@ from functools import wraps
 from typing import Any, Callable
 from time import time
 
-from .exception import Cooling
+from .exception import CoolingError
 from decorator import decorate
 
 
@@ -21,24 +21,8 @@ class CoolMaker:
                     lst = t
                     return await func(*args, **kwargs)
                 else:
-                    raise Cooling(f"还剩{int(lst + tim - t)}秒".format())
+                    raise CoolingError(lst + tim - t, func)
 
             return decorate(func, wrapper)
 
         return decorator
-
-
-if __name__ == "__main__":
-    import inspect, asyncio
-
-    cm = CoolMaker()
-
-    @cm.cool_async(5)
-    async def test(a, b, c=1):
-        print(locals())
-
-    async def main():
-        await test(1, 2, 3)
-        await test(1, 2, 3)
-
-    asyncio.run(main())
