@@ -23,7 +23,7 @@ pytest-cover = "^3.0.0"
 
 [tool.pytest.ini_options]
 testpaths = "test"
-asyncio_mode="auto"
+asyncio_mode = "auto"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

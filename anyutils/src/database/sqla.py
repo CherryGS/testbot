@@ -45,7 +45,7 @@ class RegEngine:
             `debug` : echo 是否开启
 
         Raises:
-            `KeyError`: 重复时抛出
+            `DuplicateEngineError`: 重复时抛出
         """
         r = DBCfg(name=name, link=link, debug=debug)
         if r in self._link or r in self._used:
@@ -128,3 +128,9 @@ def anywhere(stmt, data: set[tuple[Column[Any], Any]]):
         if i[1] is not None:
             stmt = stmt.where(i[0] == i[1])
     return stmt
+
+
+def anywhere_lim(stmt, data: set[tuple[Column[Any], Any]], lim: int | None = None):
+    if lim != None and lim != len(data):
+        raise KeyError(f"len(data)={len(data)} and lim={lim}")
+    return anywhere(stmt, data)

@@ -1,6 +1,6 @@
 {
     "python.linting.mypyEnabled": false,
-    "python.linting.enabled": false,
+    "python.linting.enabled": true,
     "python.linting.pydocstyleEnabled": true,
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.stubPath": "typing",

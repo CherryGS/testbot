@@ -63,13 +63,17 @@ async def table(engine: AsyncEngine):
 class TestBsModel:
     def test_make_value_raise(self):
         with pytest.raises(AttributeError):
-            PyUserPerm.make_value("0", all={"switch"})
+            PyUserPerm.make_value("0")
+        with pytest.raises(AttributeError):
+            PyUserPerm.make_value("0", ign=("switch",))
+        with pytest.raises(AttributeError):
+            PyUserPerm.make_value("0", all=("switch",))
         with pytest.raises(md.ChangePrimaryKeyError):
-            PyUserPerm.make_value("0", ign={"space"}, all={"handle"})
+            PyUserPerm.make_value("0", ign=("space",), all=("handle",))
         with pytest.raises(md.ColumnNotFoundError):
-            PyUserPerm.make_value("0", ign={"nokey"})
+            PyUserPerm.make_value("0", ign=("nokey",))
         with pytest.raises(md.ColumnNotFoundError):
-            PyUserPerm.make_value("0", all={"nokey"})
+            PyUserPerm.make_value("0", all=("nokey",))
 
     @pytest.mark.asyncio
     async def test_make_value_1(self, Session: sessionmaker, engine: AsyncEngine):
@@ -97,7 +101,7 @@ class TestBsModel:
         stmt = insert(UserPerm.__table__)
         stmt = stmt.on_conflict_do_update(
             index_elements=PyUserPerm.__primary_key__,
-            set_=PyUserPerm.make_value(stmt, all={"ban"}),
+            set_=PyUserPerm.make_value(stmt, all=("ban",)),
         )
         async with Session() as session:
             await session.execute(
@@ -147,7 +151,7 @@ class TestBsModel:
         stmt = insert(UserPerm.__table__)
         stmt = stmt.on_conflict_do_update(
             index_elements=PyUserPerm.__primary_key__,
-            set_=PyUserPerm.make_value(stmt, all={"switch"}),
+            set_=PyUserPerm.make_value(stmt, all=("switch",)),
         )
         data2 = [
             PyUserPerm(space=i[0][0], handle=i[0][1], ban=i[1], switch=i[2]).dict()

@@ -5,6 +5,7 @@ from sqlalchemy.orm.decl_api import declarative_base
 from typing_extensions import Self
 
 from .exception import *
+from functools import lru_cache
 
 Base = declarative_base()
 export_conf = {"exclude_unset": True, "exclude_defaults": False, "exclude_none": True}
@@ -20,7 +21,13 @@ class BsModel(BaseModel):
     __sqla_model__: ClassVar[Base]
 
     @classmethod
-    def make_value(cls, stmt, ign: set = set(), all: set | None = None) -> dict:
+    @lru_cache(maxsize=64)
+    def make_value(
+        cls,
+        stmt,
+        ign: tuple[str, ...] | None = None,
+        all: tuple[str, ...] | None = None,
+    ) -> dict:
         """
         为 sqla 插入时 pk 重复时使用 on_conflict_update 更新定制
 
@@ -35,19 +42,24 @@ class BsModel(BaseModel):
         Returns:
             `Dict`: `set_` 处使用的 `dict`
         """
-        for i in ign:
-            if i not in cls.__sqla_model__.__dict__:
-                raise ColumnNotFoundError(f"忽视的列名{i}不存在!")
+        if ign:
+            for i in ign:
+                if i not in cls.__sqla_model__.__dict__:
+                    raise ColumnNotFoundError(f"忽视的列名{i}不存在!")
         if all:
             for i in all:
                 if i not in cls.__sqla_model__.__dict__:
                     raise ColumnNotFoundError(f"需要的列名{i}不存在!")
         r = dict()
-        d = cls.__dict__["__fields__"].keys() if all is None else all
+        c = set(cls.__dict__["__fields__"].keys())
+        if not cls.__primary_key__ <= c:
+            raise TypeError()
+
+        d = c - cls.__primary_key__ if all is None else all
         for i in d:
             if i in cls.__primary_key__:
                 raise ChangePrimaryKeyError(f"PK {i} can't be changed")
-            elif i not in ign:
+            elif not ign or i not in ign:
                 r[i] = eval(f"stmt.excluded.{i}")
         return r
 
