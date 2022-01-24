@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.ext.asyncio.engine import AsyncEngine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.decl_api import declarative_base
-from src.database import models as md
+from anyutils.database import models as md
 from sqlalchemy.exc import SQLAlchemyError
 
 Base = declarative_base()

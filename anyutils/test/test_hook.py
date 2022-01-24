@@ -1,4 +1,4 @@
-from src.hook import HookMaker
+from anyutils.hook import HookMaker
 import pytest
 
 
