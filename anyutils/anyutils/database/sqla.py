@@ -1,7 +1,9 @@
 from dataclasses import dataclass
-from typing import Any
+from functools import lru_cache
+from typing import Any, Type
 
 from loguru import logger
+from pydantic import parse_obj_as
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.ext.asyncio.engine import AsyncEngine
 from sqlalchemy import Column
@@ -116,7 +118,8 @@ class RegEngine:
             logger.info(msg)
 
 
-def anywhere(stmt, data: set[tuple[Column[Any], Any]]):
+@lru_cache()
+def anywhere(stmt, data: tuple[tuple[Column[Any], Any]]):
     """
     将值非 `None` 的语句用 `where` 拼接上
 
@@ -130,7 +133,15 @@ def anywhere(stmt, data: set[tuple[Column[Any], Any]]):
     return stmt
 
 
-def anywhere_lim(stmt, data: set[tuple[Column[Any], Any]], lim: int | None = None):
+@lru_cache()
+def anywhere_lim(stmt, data: tuple[tuple[Column[Any], Any]], lim: int | None = None):
     if lim != None and lim != len(data):
         raise KeyError(f"len(data)={len(data)} and lim={lim}")
     return anywhere(stmt, data)
+
+
+@lru_cache()
+def anyvalue(stmt, data: tuple[tuple[Column[Any], int], ...]):
+    for i in data:
+        stmt = stmt.values(eval(f"{i[0].name}={i[1]}"))
+    return stmt

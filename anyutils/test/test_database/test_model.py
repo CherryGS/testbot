@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.ext.asyncio.engine import AsyncEngine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.decl_api import declarative_base
-from src.database import models as md
+from anyutils.database import models as md
 from sqlalchemy.exc import SQLAlchemyError
 
 Base = declarative_base()
@@ -85,7 +85,7 @@ class TestBsModel:
         elif engine.dialect.name == "postgresql":
             from sqlalchemy.dialects.postgresql import insert
         else:
-            raise TypeError(f"不支持数据库{engine.dialect.name}")
+            pytest.skip(f"不支持数据库{engine.dialect.name}")
 
         ban = [i for i in range(20)]
         switch = [i for i in range(20)]

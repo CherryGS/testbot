@@ -1,5 +1,5 @@
 from pathlib import Path
-from src.database import sqla
+from anyutils.database import sqla
 import pytest
 
 

@@ -1,6 +1,6 @@
 import asyncio
 import pytest
-from src.cool import CoolMaker, CoolingError
+from anyutils.cool import CoolMaker, CoolingError
 
 cool = CoolMaker()
 
