@@ -44,18 +44,19 @@ class BsModel(BaseModel):
         """
         if ign:
             for i in ign:
-                if i not in cls.__sqla_model__.__dict__:
+                if i not in cls.__sqla_model__.__table__.columns:
                     raise ColumnNotFoundError(f"忽视的列名{i}不存在!")
         if all:
             for i in all:
-                if i not in cls.__sqla_model__.__dict__:
+                if i not in cls.__sqla_model__.__table__.columns:
                     raise ColumnNotFoundError(f"需要的列名{i}不存在!")
-        r = dict()
-        c = set(cls.__dict__["__fields__"].keys())
-        if not cls.__primary_key__ <= c:
-            raise TypeError()
 
-        d = c - cls.__primary_key__ if all is None else all
+        ac = set(cls.__dict__["__fields__"].keys())
+        if not cls.__primary_key__ <= ac:
+            raise TypeError()
+        d = ac - cls.__primary_key__ if all is None else all
+
+        r = dict()
         for i in d:
             if i in cls.__primary_key__:
                 raise ChangePrimaryKeyError(f"PK {i} can't be changed")
@@ -83,10 +84,8 @@ class BsModel(BaseModel):
                 pass
 
         s = set()
-        d = Model.__dict__
-        for i in d:
-            if not i.startswith("_") and d[i].primary_key is True:
-                s.add(i)
+        for i in Model.__table__.primary_key:
+            s.add(i.name)
 
         if s != cls.__primary_key__:
             raise PrimaryKeyNotEqualError("PK 不完全相等")

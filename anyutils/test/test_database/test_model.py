@@ -85,7 +85,7 @@ class TestBsModel:
         elif engine.dialect.name == "postgresql":
             from sqlalchemy.dialects.postgresql import insert
         else:
-            raise TypeError(f"不支持数据库{engine.dialect.name}")
+            pytest.skip(f"不支持数据库{engine.dialect.name}")
 
         ban = [i for i in range(20)]
         switch = [i for i in range(20)]

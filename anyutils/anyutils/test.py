@@ -14,12 +14,3 @@ def randstr(l):
 
 def randnumstr(l):
     return "".join(sample(num_string, l))
-
-
-def make_data(model: Type, siz: int, **kwargs):
-    tp = namedtuple("np", list(kwargs.keys()))
-    res = []
-    for i in range(siz):
-        res += [tp(*[j[i] for j in kwargs.values()])]
-    obj = parse_obj_as(list[model], res)
-    return [i.dict() for i in obj]
