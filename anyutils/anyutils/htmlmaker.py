@@ -1,5 +1,5 @@
 import copy
-from typing import Any, Iterator
+from typing import Any, Iterator, overload
 
 from attrs import define, field
 from typing_extensions import Self
@@ -17,6 +17,11 @@ class ElementProp:
         if s:
             return f"{self.title}='{s}'"
         return s
+
+    def combine(self, o: Self):
+        """忽略检查 , 直接合并"""
+        self.content |= o.content
+        return self
 
     def cp(self):
         return copy.deepcopy(self)
@@ -63,7 +68,7 @@ class DOMTree:
     tag: str
     text: Any = field(converter=str, default="")
     c: list[Self] = field(factory=list)
-    props: PropDict[ElementProp] = field(factory=lambda: PropDict[ElementProp]())
+    props: dict[str, ElementProp] = field(factory=dict)
     father: Self | None = field(default=None)
 
     def free(self):
@@ -75,27 +80,50 @@ class DOMTree:
             self.father = None
         return self
 
-    def add(self, e: Self):
+    @overload
+    def add(self, e: Self) -> Self:
+        ...
+
+    @overload
+    def add(self, e: str, text: str | None = None) -> Self:
+        ...
+
+    def add(self, e: Self | str, text: str | None = None):
         """
         加入一个子节点 , 会将其从原先的 father 上移除
         """
+        if isinstance(e, str):
+            e = self.__class__(e, text)
         e.free()
         e.father = self
         self.c.append(e)
+        return self
+
+    def add_fa(self, e: Self):
+        """
+        将一个节点变成自己的父亲
+        """
+        e.add(self)
         return self
 
     def add_props(self, tag: str, e: set[str]):
         """
         添加属性的快捷方法
         """
-        setattr(self.props, tag, ElementProp(tag, e))
+        self.props[tag] = ElementProp(tag, e)
         return self
 
     def cp(self):
         """深拷贝的快捷方法"""
         return copy.deepcopy(self)
 
+    def output(self) -> str:
+        """输出当前的 DOMTree"""
+        r = self._generate()
+        return r[0] + "".join([i.output() for i in self.c]) + self.text + r[1]
+
     def _generate(self) -> tuple[str, str]:
+        """生成该节点的属性"""
         if self.tag == "br":
             return ("<br>", "")
         else:
@@ -104,23 +132,6 @@ class DOMTree:
                 if i[0] != "__orig_class__":
                     string += i[1].output() + " "
             return (
-                f"<{self.tag} {string}>",
+                f"<{self.tag} {string.strip()}>",
                 f"</{self.tag}>",
             )
-
-    def output(self) -> str:
-        """输出当前的 DOMTree"""
-        r = self._generate()
-        return r[0] + "".join([i.output() for i in self.c]) + self.text + r[1]
-
-
-if __name__ == "__main__":
-    dt = DOMTree
-    e = ElementProp
-
-    body = dt("body")
-    body.props._class = e("class", {"unit"})
-    # for i in body.props.items():
-    #     print(i)
-    # print(body.props.values())
-    print(body.output())

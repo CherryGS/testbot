@@ -19,6 +19,7 @@ decorator = "^5.1.1"
 nonebot-plugin-test = "^0.3.0"
 aiosqlite = "^0.17.0"
 nb-cli = "^0.6.2"
+hypothesis = "^6.37.2"
 
 [nonebot.plugins]
 plugins = []

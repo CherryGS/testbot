@@ -19,6 +19,8 @@ pytest = "^6.2.5"
 aiosqlite = "^0.17.0"
 pytest-asyncio = "^0.17.2"
 pytest-cover = "^3.0.0"
+pytest-xdist = "^2.5.0"
+lxml = "^4.8.0"
 
 [tool.pytest.ini_options]
 testpaths = "test"

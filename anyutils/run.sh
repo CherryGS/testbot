@@ -1,1 +1,0 @@
-python -m pytest --cov=anyutils/ --cov-report=xml --dburl=sqlite+aiosqlite:///:memory:

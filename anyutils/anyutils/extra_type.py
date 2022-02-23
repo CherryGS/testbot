@@ -45,18 +45,23 @@ class PropDict(Mapping[str, T]):
     def __len__(self):
         return len(super().__getattribute__("__data_data__"))
 
-    def __getitem__(self, __k: str):
+    def __getitem__(self, __k):
         return super().__getattribute__("__data_data__")[__k]
+
+    def __setitem__(self, __value, __k):
+        r = super().__getattribute__("__data_data__")
+        r[__k] = __value
 
     def __iter__(self):
         return iter(super().__getattribute__("__data_data__"))
 
     def __eq__(self, __o: object):
-        print(super().__getattribute__("__data_data__"))
-        print(__o.__getattribute__("__data_data__"))
-        return super().__getattribute__("__data_data__") == __o.__getattribute__(
-            "__data_data__"
-        )
+        try:
+            return super().__getattribute__("__data_data__") == __o.__getattribute__(
+                "__data_data__"
+            )
+        except AttributeError:
+            return super().__eq__(__o)
 
     def __ne__(self, __o: object):
         return super().__getattribute__("__eq__")(__o) ^ True

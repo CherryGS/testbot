@@ -1,0 +1,1 @@
+python -m pytest --cov=anyutils/ --cov-report=xml --hypothesis-show-statistics %*

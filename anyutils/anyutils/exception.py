@@ -19,6 +19,3 @@ class CoolingError(AnyUtilsError):
         super().__init__(*args)
         self.rmtime = rmtime
         self.func = func
-
-
-from .database.exception import *

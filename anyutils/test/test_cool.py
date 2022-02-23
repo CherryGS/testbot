@@ -1,6 +1,8 @@
 import asyncio
+
 import pytest
-from anyutils.cool import CoolMaker, CoolingError
+from anyutils.cool import CoolingError, CoolMaker
+
 
 cool = CoolMaker()
 
@@ -11,7 +13,6 @@ async def func(x):
 
 
 class TestCoolMaker:
-    @pytest.mark.asyncio
     async def test_async_func(self):
         assert await func(1) == 1
         with pytest.raises(CoolingError):
