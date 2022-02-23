@@ -40,6 +40,8 @@ class ElementProp:
         if isinstance(e, str):
             self.content.add(e)
         else:
+            if self.title != e.title:
+                raise ValueError(f"两者title不相等 , {self.title} - {e.title}")
             self.content |= e.content
 
         return self
