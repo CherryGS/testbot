@@ -1,0 +1,9 @@
+# global name
+GLOBAL_SPACE = 0
+GLOBAL_HANDLE = 0
+GLOBAL_PLUGIN_NAME = "_All_"
+
+NO_TYPE = 0
+ENABLE_TYPE = 1
+DISABLE_TYPE = 2
+# ban

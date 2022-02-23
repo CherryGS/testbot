@@ -1,0 +1,1 @@
+npx openapi-typescript in.json --output out.ts
