@@ -6,21 +6,23 @@ from typing_extensions import Self
 
 from .extra_type import PropDict
 
+PV_ = list[str]
+
 
 @define
 class ElementProp:
     title: str
-    content: set[str]
+    content: PV_
 
     def output(self):
-        s = (" ".join(sorted(self.content))).strip()
+        s = (" ".join(self.content)).strip()
         if s:
             return f"{self.title}='{s}'"
         return s
 
     def combine(self, o: Self):
         """忽略检查 , 直接合并"""
-        self.content |= o.content
+        self.content += o.content
         return self
 
     def cp(self):
@@ -38,19 +40,21 @@ class ElementProp:
 
     def __iadd__(self, e: str | Self):
         if isinstance(e, str):
-            self.content.add(e)
+            self.content.append(e)
         else:
             if self.title != e.title:
                 raise ValueError(f"两者title不相等 , {self.title} - {e.title}")
-            self.content |= e.content
+            self.content += e.content
 
         return self
 
     def __isub__(self, e: str | Self):
+        # * 复杂度 nm , 注意
         if isinstance(e, str):
             self.content.remove(e)
         else:
-            self.content -= e.content
+            for i in e.content:
+                self.content.remove(i)
         return self
 
     def __str__(self) -> str:
@@ -108,7 +112,7 @@ class DOMTree:
         e.add(self)
         return self
 
-    def add_props(self, tag: str, e: set[str]):
+    def add_props(self, tag: str, e: PV_):
         """
         添加属性的快捷方法
         """

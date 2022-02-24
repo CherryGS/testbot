@@ -33,7 +33,7 @@ async def _():
 
 
 regex_1 = re.compile("(abc|arc|agc)[0-9]{3}[a-h](?![a-z])")
-screenshot_problom = on_message(permission=SUPERUSER, priority=1)
+screenshot_problom = on_message(permission=SUPERUSER, priority=10)
 
 
 @screenshot_problom.handle()
@@ -52,7 +52,7 @@ async def _(bot: Bot, event: Event, state: T_State):
 
 
 regex_2 = re.compile("(abc|arc|agc)[0-9]{3}(?![a-z])")
-screenshot_contest = on_message(permission=SUPERUSER, priority=1)
+screenshot_contest = on_message(permission=SUPERUSER, priority=10)
 
 
 @screenshot_contest.handle()
@@ -71,7 +71,7 @@ async def _(bot: Bot, event: Event, state: T_State):
 
 
 regex_3 = re.compile("(abc|arc|agc)[0-9]{3}rk")
-screenshot_standings = on_message(permission=SUPERUSER, priority=1)
+screenshot_standings = on_message(permission=SUPERUSER, priority=10)
 
 
 @screenshot_standings.handle()
@@ -92,7 +92,7 @@ async def _(bot: Bot, event: Event, state: T_State):
 
 
 regex_4 = re.compile("(abc|arc|agc)[0-9]{3}[a-h]ed")
-screenshot_editorial = on_message(permission=SUPERUSER, priority=1)
+screenshot_editorial = on_message(permission=SUPERUSER, priority=10)
 
 
 @screenshot_editorial.handle()

@@ -1,6 +1,8 @@
 from typing import Mapping, TypeVar
 from typing_extensions import Self
 
+from attr import define
+
 
 T = TypeVar("T")
 

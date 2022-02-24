@@ -25,6 +25,15 @@ hypothesis = "^6.37.2"
 plugins = []
 plugin_dirs = ["plugins"]
 
+[tool.pytest.ini_options]
+testpaths="test"
+norecursedirs="admin anyutils"
+asyncio_mode="auto"
+
+[tool.pytest.ini_options_notuse]
+postgresql_db_url="postgresql+asyncpg://testbot:testbot@127.0.0.1:5432/test"
+mysql_db_url=""
+
 [build-system]
 requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

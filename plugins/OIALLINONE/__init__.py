@@ -1,1 +1,1 @@
-from .atcoder import *
+from .OIALLINONE import *

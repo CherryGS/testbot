@@ -26,3 +26,13 @@ class TestHtmlMaker:
         r = ts.DOMTree("html").add("body")
         geneHtml(20, r)
         html = etree.HTML(r.output(), etree.HTMLParser(recover=False))
+
+    def test_2(self):
+        dt = ts.DOMTree
+        hack = (
+            dt("td")
+            .add_props("style", {"font-size: 9px;"})
+            .add_props("class", {"dark"})
+        )
+        s_hack = dt("span").add_props("class", {"successfulChallengeCount"})
+        u_hack = dt("span").add_props("class", {"unsuccessfulChallengeCount"})

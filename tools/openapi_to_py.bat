@@ -1,1 +1,1 @@
-openapi-python-client generate --path in.json
+openapi-python-client generate --url %*
