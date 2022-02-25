@@ -20,14 +20,21 @@ class Status(str, Enum):
     FAILED = "FAILED"
 
 
-class NormalResponse(GenericModel, Generic[T]):
-    status: Status
-    comment: str | None = None  # 查询出错时的错误提示
-    result: list[T] | None = None
+class Config:
+    json_loads = orjson.loads
+    json_dumps = lambda v, *, default: orjson.dumps(v, default=default).decode()
 
-    class Config:
-        json_loads = orjson.loads
-        json_dumps = lambda v, *, default: orjson.dumps(v, default=default).decode()
+
+class UserResponse(BaseModel):
+    status: Status
+    comment: str | None = None
+    result: list[User] | None = None
+
+
+class CListResponse(BaseModel):
+    status: Status
+    comment: str | None = None
+    result: list[Contest] | None = None
 
 
 class SubStandingResponse(BaseModel):
@@ -44,34 +51,35 @@ class StandingResponse(BaseModel):
 
 async def get_user_info(handles: str, *, client: AsyncClient):
     url = officialBaseUrl + "/user.info/" + f"?handles={handles}"
-    return NormalResponse[User].parse_raw((await client.get(url)).content)
+    return UserResponse.parse_raw((await client.get(url)).content)
 
 
 async def get_contest_list(gym: strBoolean = "false", *, client: AsyncClient):
     url = officialBaseUrl + "/contest.list" + f"?gym={gym}"
-    return NormalResponse[Contest].parse_raw((await client.get(url)).content)
+    return CListResponse.parse_raw((await client.get(url)).content)
 
 
 async def get_contest_standings(
     contestId: int,
     handles: str,
-    from_: int | None = None,
-    count: int | None = None,
-    room: int | None = None,
+    from_: int = 1,
+    count: int = 100,
+    room: int | Literal[""] = "",
     showUnofficial: strBoolean = "true",
     *,
     client: AsyncClient,
 ):
     url = (
         officialBaseUrl
-        + "/contest.standings/"
-        + f"?contestid={contestId}"
+        + "/contest.standings"
+        + f"?contestId={contestId}"
         + f"&handles={handles}"
-        + f"&from_={from_}"
+        + f"&from={from_}"
         + f"&count={count}"
         + f"&room={room}"
         + f"&showUnofficial={showUnofficial}"
     )
+    print(url)
     return StandingResponse.parse_raw((await client.get(url)).content)
 
 

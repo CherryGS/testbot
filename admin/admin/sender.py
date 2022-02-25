@@ -1,6 +1,7 @@
 import inspect
 import time
 from functools import wraps
+from typing import Iterable, Type
 
 from nonebot import get_bot
 from nonebot.adapters import Bot
@@ -24,7 +25,7 @@ class SenderFactory:
         self,
         group_id: int | None = None,
         need_pass: tuple[type[Exception], ...] = (),
-        bot: Bot = None,
+        bot: Bot | None = None,
     ) -> None:
         self.group_id = group_id
         self.need_pass = need_pass
@@ -38,6 +39,26 @@ class SenderFactory:
             group_id=self.group_id,
             message=str(msg),
         )
+
+    def catch(
+        self, exc: Type[Exception] | Iterable[Type[Exception]], log: str | None = None
+    ):
+        """捕获并报告选定错误"""
+
+        def decorater(func):
+            @wraps(func)
+            async def wrapper(*args, **kwargs):
+                nonlocal exc
+                try:
+                    r = await func(*args, **kwargs)
+                    return r
+                except exc as e:
+                    msg = log if log is not None else str(type(e)) + str(e)
+                    await self._send(msg)
+
+            return wrapper
+
+        return decorater
 
     def when_raise(self, log: str | None = None):
         def decorater(func):
@@ -79,7 +100,7 @@ class SenderFactory:
 
 
 sender = SenderFactory(
-    group_id=cfg.admin_group_id,
+    group_id=cfg.reply_group_id,
     need_pass=(
         IgnoredException,
         SkippedException,

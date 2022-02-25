@@ -262,7 +262,7 @@ async def get_spstandings_screenshot(
     if res.status != res.status.OK:
         raise ValueError(res.comment)
 
-    assert res.result is not None
+    assert res.result is not None, "出现了一些意料之外的错误..."
 
     for i in res.result.rows:
         users = await get_user_info(
@@ -298,9 +298,9 @@ async def get_spstandings_screenshot(
                 has_hack,
             ).output()
         )
-        # TODO: DEBUG ONLY
-        with open(f"tmp/html/{j}.html", "w") as f:
-            f.write(lines[-1])
+        # # TODO: DEBUG ONLY
+        # with open(f"tmp/html/{j}.html", "w") as f:
+        #     f.write(lines[-1])
 
     # async with async_playwright() as dri:
     #     browser = await dri.chromium.launch(
@@ -312,7 +312,9 @@ async def get_spstandings_screenshot(
     #     )
     #     page = await ctx.new_page()
 
-    await page.goto(get_contest_page_url(contestId=contestId, num=1), wait_until="load")
+    await page.goto(
+        get_contest_page_url(contestId=contestId, num=1), wait_until="load"
+    )
 
     # 移除已有的列
     await page.locator(

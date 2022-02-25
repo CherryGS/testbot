@@ -1,17 +1,22 @@
 import re
 from typing import Any, Hashable
 
+from admin import sender
 from httpx import AsyncClient
-from nonebot import get_driver, on_message
+from nonebot import get_driver, on_message, on_regex
 from nonebot.adapters.onebot.v11 import Bot, Event, MessageSegment
 from nonebot.log import logger
-from nonebot.params import Depends
+from nonebot.params import Depends, RegexMatched
 from nonebot.permission import SUPERUSER
 from nonebot.typing import T_State
 from playwright.async_api import Page, async_playwright
 
 from ..utils import is_marked
-from .method import get_problem_screenshot, get_standings_screenshot
+from .method import (
+    get_problem_screenshot,
+    get_spstandings_screenshot,
+    get_standings_screenshot,
+)
 
 _cached_page: dict[Hashable, Page] = dict()
 
@@ -55,14 +60,13 @@ async def get_page(id: Hashable, **kwargs):
     return _cached_page[id]
 
 
-regex_1 = re.compile("cf[0-9]+(p[0-9]+){1}")
-screenshot_standings = on_message(permission=SUPERUSER, priority=10)
+screenshot_standings = on_regex(
+    "^cf[0-9]+(p[0-9]+){1}", permission=SUPERUSER, priority=10
+)
 
 
 @screenshot_standings.handle()
-async def _(marked: str | None = Depends(is_marked(regex_1))):
-    if marked is None:
-        return
+async def _(marked: str = RegexMatched()):
     logger.debug(f"screenshot_standings regex match {marked}")
     [contestId, num] = marked.strip("cf").split("p")
     img = await get_standings_screenshot(
@@ -71,14 +75,11 @@ async def _(marked: str | None = Depends(is_marked(regex_1))):
     await screenshot_standings.finish(MessageSegment.image(img))
 
 
-regex_2 = re.compile("cf[0-9]+[a-o]")
-screenshot_problem = on_message(permission=SUPERUSER, priority=10)
+screenshot_problem = on_regex("^cf[0-9]+[a-o]", permission=SUPERUSER, priority=10)
 
 
 @screenshot_problem.handle()
-async def _(marked: str | None = Depends(is_marked(regex_2))):
-    if marked is None:
-        return
+async def _(marked: str = RegexMatched()):
     logger.debug(f"screenshot_problem regex match {marked}")
     contestId = marked[2:-1]
     idx = marked[-1]
@@ -86,3 +87,18 @@ async def _(marked: str | None = Depends(is_marked(regex_2))):
         int(contestId), idx, page=await get_page(contestId)
     )
     await screenshot_problem.finish(MessageSegment.image(img))
+
+
+screenshot_spstandings = on_regex("^cf[0-9]+[ ].*", permission=SUPERUSER, priority=10)
+
+
+@screenshot_spstandings.handle()
+async def _(marked: str = RegexMatched()):
+    params = marked.split(" ")
+    contestId = params.pop(0)[2:]
+    logger.debug("screenshot_spstandings regex match {marked}")
+    async with AsyncClient() as client:
+        img = await get_spstandings_screenshot(
+            params, int(contestId), client=client, page=await get_page(contestId)
+        )
+    await screenshot_spstandings.finish(MessageSegment.image(img))

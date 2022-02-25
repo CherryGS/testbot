@@ -4,4 +4,4 @@ __all__ = ["AdminConfig"]
 
 
 class AdminConfig(BaseSettings, extra=Extra.ignore):
-    admin_group_id: int
+    reply_group_id: int
