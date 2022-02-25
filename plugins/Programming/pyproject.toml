@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "nonebot_plugin_programming"
+version = "0.1.0"
+description = "Some interesting programming tools"
+authors = ["CherryGS <tickten@outlook.com>"]
+license = "MIT"
+packages = [
+    { include = "programming", from = "." },
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+nonebot2 = "^2.0.0-beta.2"
+playwright = "^1.19.1"
+SQLAlchemy = "^1.4.29"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

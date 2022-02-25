@@ -9,6 +9,7 @@
 # cache
 .hypothesis
 .pytest_cache
+dist
 
 # config
 .env.prod
