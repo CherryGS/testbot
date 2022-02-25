@@ -7,7 +7,7 @@ app = nonebot.get_asgi()
 driver = nonebot.get_driver()
 driver.register_adapter(ONEBOT_V11Adapter)
 
-nonebot.load_plugin("admin")
+# nonebot.load_plugin("admin")
 nonebot.load_plugins("plugins")
 nonebot.load_builtin_plugins("echo")
 

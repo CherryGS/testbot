@@ -234,9 +234,7 @@ def generate_line(
     return body
 
 
-async def get_standings_screenshot(
-    contestId: int, num: int, *, client: AsyncClient, page: Page
-):
+async def get_standings_screenshot(contestId: int, num: int, *, page: Page):
     await page.goto(get_contest_page_url(contestId=contestId, num=num))
     return await page.screenshot(type="png", full_page=True)
 
@@ -329,8 +327,9 @@ async def get_spstandings_screenshot(
     return await page.screenshot(type="png", full_page=True)
 
 
-async def get_problem_screenshot():
-    pass
+async def get_problem_screenshot(contestId: int, idx: str, *, page: Page):
+    await page.goto(get_problem_page_url(contestId, idx), wait_until="networkidle")
+    return await page.screenshot(type="png", full_page=True)
 
 
 if __name__ == "__main__":
@@ -348,8 +347,8 @@ if __name__ == "__main__":
             "mukim",
             "Mohamed2209",
         ]
-        with open(f"./tmp/img/{i}.png", "wb") as f:
-            f.write(await get_spstandings_screenshot(data, 103492))
+        # with open(f"./tmp/img/{i}.png", "wb") as f:
+        #     f.write(await get_spstandings_screenshot(data, 103492))
 
     for i in range(1, 2):
         asyncio.run(main(i))

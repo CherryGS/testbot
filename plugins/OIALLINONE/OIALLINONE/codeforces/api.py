@@ -88,8 +88,8 @@ async def get_contest_page(*, contestId: int, num: int = 1, client: AsyncClient)
     ).content
 
 
-def get_problem_page_url(contestId: int, num: int):
+def get_problem_page_url(contestId: int, idx: str):
     if contestId < 100000:
-        return unofficialBaseUrl + f"/contest/{contestId}/standings/page/{num}"
+        return unofficialBaseUrl + f"/contest/{contestId}/problem/{idx}"
     else:
-        return unofficialBaseUrl + f"/gym/{contestId}/standings/page/{num}"
+        return unofficialBaseUrl + f"/gym/{contestId}/problem/{idx}"

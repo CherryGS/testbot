@@ -37,7 +37,7 @@ screenshot_problom = on_message(permission=SUPERUSER, priority=10)
 
 
 @screenshot_problom.handle()
-async def _(bot: Bot, event: Event, state: T_State):
+async def _(event: Event):
     matched = re.search(regex_1, event.get_plaintext())
     if not matched:
         return
@@ -56,7 +56,7 @@ screenshot_contest = on_message(permission=SUPERUSER, priority=10)
 
 
 @screenshot_contest.handle()
-async def _(bot: Bot, event: Event, state: T_State):
+async def _(event: Event):
     matched = re.search(regex_2, event.get_plaintext())
     if not matched:
         return
@@ -75,7 +75,7 @@ screenshot_standings = on_message(permission=SUPERUSER, priority=10)
 
 
 @screenshot_standings.handle()
-async def _(bot: Bot, event: Event, state: T_State):
+async def _(event: Event):
     matched = re.search(regex_3, event.get_plaintext())
     if not matched:
         return
@@ -96,7 +96,7 @@ screenshot_editorial = on_message(permission=SUPERUSER, priority=10)
 
 
 @screenshot_editorial.handle()
-async def _(bot: Bot, event: Event, state: T_State):
+async def _(event: Event):
     matched = re.search(regex_4, event.get_plaintext())
     if not matched:
         return
