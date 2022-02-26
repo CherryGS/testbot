@@ -4,8 +4,6 @@ from typing import Any, Iterator, overload
 from attrs import define, field
 from typing_extensions import Self
 
-from .extra_type import PropDict
-
 PV_ = list[str]
 
 

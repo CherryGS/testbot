@@ -5,22 +5,16 @@ from typing import Any, Awaitable, Callable, Iterable
 
 from nonebot import get_bot
 from nonebot.adapters import Bot
-from nonebot.exception import (
-    FinishedException,
-    IgnoredException,
-    PausedException,
-    RejectedException,
-    SkippedException,
-    StopPropagation,
-)
+from nonebot.exception import NoneBotException
 from nonebot.log import logger
 from nonebot.matcher import Matcher
 
 
 __all__ = ["sender", "Sender", "sende", "SenderFactory"]
 
-T_Exc = type[Exception] | Iterable[type[Exception]]
-T_ExcMsgFunc = Callable[[type[Exception], str | None], str]
+T_Exc = type[Exception]
+T_Excs = T_Exc | Iterable[T_Exc]
+T_ExcMsgFunc = Callable[[type[Exception]], str]
 
 
 class SenderFactory:
@@ -28,11 +22,11 @@ class SenderFactory:
         self,
         *,
         group_id: int | None = None,
-        need_pass: tuple[type[Exception], ...] = (),
+        need_raise: T_Excs = (),
         bot: Bot | None = None,
     ):
         self.group_id = group_id
-        self.need_pass = need_pass
+        self.need_pass = need_raise
         self.bot = bot
 
     def __call__(self) -> Any:
@@ -44,11 +38,11 @@ class Sender:
     def __init__(
         self,
         group_id: int,
-        need_pass: tuple[type[Exception], ...] = (),
+        need_raise: T_Excs = (),
         bot: Bot | None = None,
     ) -> None:
         self.group_id = group_id
-        self.need_pass = need_pass
+        self.need_raise = need_raise
         self.bot = bot
 
     async def _send(self, msg: str):
@@ -69,20 +63,20 @@ class Sender:
     ):
         try:
             if custom_ is not None:
-                return custom_(e, log)
+                return custom_(e)
         except:
             pass
-        return log if log is not None else str(type(e)) + str(e)
+        return log if log is not None else str(type(e)) + ": " + str(e)
 
     def catch(
         self,
-        exc: T_Exc,
+        exc: T_Excs,
         log: str | None = None,
         *,
         matcher: type[Matcher] | None = None,
         func_msg: T_ExcMsgFunc | None = None,
     ):
-        """捕获并报告选定错误 , 如果添加了 `matcher` 则会调用该 `matcher` 的 `finish` 来发送 msg"""
+        """捕获并报告选定错误 , 如果添加了 `matcher` 则会调用该 `matcher` 的 `send` 来发送 msg"""
 
         def decorater(func: Callable[..., Awaitable[Any]]):
             @wraps(func)
@@ -91,37 +85,13 @@ class Sender:
                 try:
                     r = await func(*args, **kwargs)
                     return r
+                except self.need_raise as e:
+                    raise
                 except exc as e:
                     msg = self._generate_exc_msg(e, log, custom_=func_msg)
-                    await self._send(msg) if matcher is None else await matcher.finish(
+                    await self._send(msg) if matcher is None else await matcher.send(
                         msg
                     )
-                except Exception as e:
-                    if getattr(e, "__sent__", None) is None:
-                        msg = self._generate_exc_msg(e, log, custom_=func_msg)
-                        await self._send(msg)
-                        setattr(e, "__sent__", True)
-                    raise
-
-            return wrapper
-
-        return decorater
-
-    def on_raise(self, log: str | None = None, *, func_msg: T_ExcMsgFunc | None = None):
-        def decorater(func):
-            @wraps(func)
-            async def wrapper(*args, **kwargs):
-                try:
-                    r = await func(*args, **kwargs)
-                    return r
-                except self.need_pass as e:
-                    logger.warning(f"异常被忽略 , 信息 {str(type(e)) + str(e)}")
-                except Exception as e:
-                    if getattr(e, "__sent__", None) is None:
-                        msg = self._generate_exc_msg(e, log, custom_=func_msg)
-                        await self._send(msg)
-                        setattr(e, "__sent__", True)
-                    raise
 
             return wrapper
 
@@ -149,30 +119,14 @@ class Sender:
 
 
 sende = SenderFactory(
-    need_pass=(
-        IgnoredException,
-        SkippedException,
-        FinishedException,
-        RejectedException,
-        PausedException,
-        StopPropagation,
-        FinishedException,
-    ),
+    need_raise=(NoneBotException,),
 )
 try:
     from .initialize import cfg
 
     sender = Sender(
         group_id=cfg.reply_group_id,
-        need_pass=(
-            IgnoredException,
-            SkippedException,
-            FinishedException,
-            RejectedException,
-            PausedException,
-            StopPropagation,
-            FinishedException,
-        ),
+        need_raise=(NoneBotException,),
     )
 except:
     from nonebot import export

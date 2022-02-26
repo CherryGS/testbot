@@ -1,4 +1,4 @@
-from admin import sender
+from admin import sender, locker, LockedError
 from httpx import AsyncClient
 from nonebot import on_regex
 from nonebot.adapters.onebot.v11 import MessageSegment
@@ -30,6 +30,9 @@ editorial_screenshot = on_regex(
 
 
 @problem_screenshot.handle()
+@sender.catch(Exception, log="未知错误...")
+@sender.catch(LockedError, log="冷却中...")
+@locker.lock("1")
 async def _(matched: str = RegexMatched()):
     contest_prefix = matched[0:3]
     contest_id = matched[3:-1]
@@ -46,6 +49,9 @@ async def _(matched: str = RegexMatched()):
 
 
 @contest_screenshot.handle()
+@sender.catch(Exception, log="未知错误...")
+@sender.catch(LockedError, log="冷却中...")
+@locker.lock("1")
 async def _(matched: str = RegexMatched()):
     contest_prefix = matched[0:3]
     contest_id = matched[3:]
@@ -57,6 +63,9 @@ async def _(matched: str = RegexMatched()):
 
 
 @standings_screenshot.handle()
+@sender.catch(Exception, log="未知错误...")
+@sender.catch(LockedError, log="冷却中...")
+@locker.lock("1")
 async def _(matched: str = RegexMatched()):
     if config.atcoder_pswd is None or config.atcoder_user is None:
         await standings_screenshot.finish("该功能需要配置")
@@ -72,12 +81,14 @@ async def _(matched: str = RegexMatched()):
 
 
 @editorial_screenshot.handle()
+@sender.catch(Exception, log="未知错误...")
+@sender.catch(LockedError, log="冷却中...")
 @sender.catch(
     exc=SourceNotFoundError,
-    log="似乎有什么东西消失了...",
     matcher=editorial_screenshot,
-    func_msg=lambda x, y: t if (t := str(x)) else str(y),
+    func_msg=lambda y: t if (t := str(y)) else "似乎有什么东西消失了...",
 )
+@locker.lock("1")
 async def _(matched: str = RegexMatched()):
     contest_prefix = matched[0:3]
     contest_id = matched[3:6]

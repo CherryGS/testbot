@@ -235,7 +235,7 @@ def generate_line(
 
 
 async def get_standings_screenshot(contestId: int, num: int, *, page: Page):
-    await page.goto(get_contest_page_url(contestId=contestId, num=num))
+    await page.goto(get_ctstandings_page_url(contestId=contestId, num=num))
     return await page.screenshot(type="png", full_page=True)
 
 
@@ -253,8 +253,8 @@ async def get_spstandings_screenshot(
         await get_contest_page(contestId=contestId, client=client),
         etree.HTMLParser(),
     )
-    has_penalty = len(tree.xpath("//table//*[contains(text(), 'Penalty')]")) == 1
-    has_hack = len(tree.xpath("//table//*[@title='Hacks']")) == 1
+    has_penalty = len(tree.xpath("//table//*[contains(text(), 'Penalty')]")) == 1  # type: ignore
+    has_hack = len(tree.xpath("//table//*[@title='Hacks']")) == 1  # type: ignore
     res = await get_contest_standings(
         contestId, ";".join(data), showUnofficial=showUnofficial, client=client
     )
@@ -313,7 +313,7 @@ async def get_spstandings_screenshot(
     #     page = await ctx.new_page()
 
     await page.goto(
-        get_contest_page_url(contestId=contestId, num=1), wait_until="load"
+        get_ctstandings_page_url(contestId=contestId, num=1), wait_until="load"
     )
 
     # 移除已有的列
@@ -334,23 +334,6 @@ async def get_problem_screenshot(contestId: int, idx: str, *, page: Page):
     return await page.screenshot(type="png", full_page=True)
 
 
-if __name__ == "__main__":
-    import asyncio
-    import sys
-
-    async def main(i):
-        data = [
-            "BucketPotato",
-            "Vercingetorix",
-            "jiangly",
-            "s7win99",
-            "user202729_",
-            "carlszk",
-            "mukim",
-            "Mohamed2209",
-        ]
-        # with open(f"./tmp/img/{i}.png", "wb") as f:
-        #     f.write(await get_spstandings_screenshot(data, 103492))
-
-    for i in range(1, 2):
-        asyncio.run(main(i))
+async def get_contest_screenshot(contestId: int, *, page: Page):
+    await page.goto(get_contest_page_url(contestId), wait_until="networkidle")
+    return await page.screenshot(type="png", full_page=True)

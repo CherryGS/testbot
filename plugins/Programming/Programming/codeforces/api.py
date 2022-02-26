@@ -77,7 +77,14 @@ async def get_contest_standings(
     return StandingResponse.parse_raw((await client.get(url)).content)
 
 
-def get_contest_page_url(contestId: int, num: int):
+def get_contest_page_url(contestId: int):
+    if contestId < 100000:
+        return unofficialBaseUrl + f"/contest/{contestId}"
+    else:
+        return unofficialBaseUrl + f"/gym/{contestId}"
+
+
+def get_ctstandings_page_url(contestId: int, num: int):
     if contestId < 100000:
         return unofficialBaseUrl + f"/contest/{contestId}/standings/page/{num}"
     else:
@@ -86,7 +93,7 @@ def get_contest_page_url(contestId: int, num: int):
 
 async def get_contest_page(*, contestId: int, num: int = 1, client: AsyncClient):
     return (
-        await client.get(get_contest_page_url(contestId=contestId, num=num))
+        await client.get(get_ctstandings_page_url(contestId=contestId, num=num))
     ).content
 
 
