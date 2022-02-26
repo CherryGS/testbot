@@ -1,8 +1,8 @@
 import asyncio
 from httpx import AsyncClient
 
-from playwright.async_api import Browser, Page
-from pydantic import BaseModel, ValidationError, validator
+from playwright.async_api import  Page
+from pydantic import BaseModel, validator
 
 from ..exceptions import SourceNotFoundError, UnknownError
 from lxml import etree
@@ -77,6 +77,10 @@ async def get_problem_screenshot(string: Atc, page: Page):
     count = await details.count()
     for i in range(count):
         await details.nth(i).click()
+    # 隐藏用户名
+    await page.locator("xpath=//a[@class='dropdown-toggle']").evaluate_all(
+        "( lis ) => { for(var e of lis) { e.textContent = ''; } }"
+    )
     return await page.screenshot(full_page=True, type="jpeg", quality=100)
 
 
@@ -85,6 +89,10 @@ async def get_contest_screenshot(string: Atc, page: Page):
     await page.goto(url)
     await page.evaluate(
         "() => { document.getElementById('fixed-server-timer').remove(); }"
+    )
+    # 隐藏用户名
+    await page.locator("xpath=//a[@class='dropdown-toggle']").evaluate_all(
+        "( lis ) => { for(var e of lis) { e.textContent = ''; } }"
     )
     return await page.screenshot(full_page=True, type="jpeg", quality=100)
 
@@ -113,9 +121,9 @@ async def get_standings_screenshot(
         await page.locator("xpath=//a[text()='100']").click()
 
     # 隐藏用户名
-    await page.locator(
-        "xpath=//a[@class='dropdown-toggle']", has_text=username
-    ).evaluate_all("( lis ) => { for(var e of lis) { e.textContent = ''; } }")
+    await page.locator("xpath=//a[@class='dropdown-toggle']").evaluate_all(
+        "( lis ) => { for(var e of lis) { e.textContent = ''; } }"
+    )
 
     # 删除右下角时间
     await page.evaluate(
@@ -139,5 +147,9 @@ async def get_editorial_screenshot(data: Atc, *, client: AsyncClient, page: Page
     # 删除右下角时间
     await page.evaluate(
         "() => { document.getElementById('fixed-server-timer').remove(); }"
+    )
+    # 隐藏用户名
+    await page.locator("xpath=//a[@class='dropdown-toggle']").evaluate_all(
+        "( lis ) => { for(var e of lis) { e.textContent = ''; } }"
     )
     return await page.screenshot(full_page=True, type="jpeg", quality=100)

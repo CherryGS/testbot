@@ -13,7 +13,7 @@ cached_page: dict[Hashable, Page] = dict()
 # 使截图更清晰
 params_screenshot = {
     # "viewport": {"width": 1920, "height": 1080},
-    "device_scale_factor": 2,
+    "device_scale_factor": 1.4,
 }
 
 

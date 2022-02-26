@@ -70,11 +70,12 @@ class Sender:
 
     def catch(
         self,
-        exc: T_Excs,
+        exc: T_Excs = Exception,
         log: str | None = None,
         *,
         matcher: type[Matcher] | None = None,
         func_msg: T_ExcMsgFunc | None = None,
+        is_raise: bool = False,
     ):
         """捕获并报告选定错误 , 如果添加了 `matcher` 则会调用该 `matcher` 的 `send` 来发送 msg"""
 
@@ -92,6 +93,8 @@ class Sender:
                     await self._send(msg) if matcher is None else await matcher.send(
                         msg
                     )
+                    if is_raise:
+                        raise
 
             return wrapper
 

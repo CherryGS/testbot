@@ -5,6 +5,7 @@ from nonebot.adapters.onebot.v11 import MessageSegment
 from nonebot.params import RegexMatched
 from nonebot.permission import SUPERUSER
 
+from ..config import COMMAND_LOCK
 from ..exceptions import SourceNotFoundError
 from ..initialize import config, get_page, params_screenshot
 from .methods import (
@@ -16,23 +17,23 @@ from .methods import (
 )
 
 problem_screenshot = on_regex(
-    "^(abc|arc|agc)[0-9]{3}[a-h](?![a-z])", permission=SUPERUSER, priority=10
+    "^(abc|arc|agc)[0-9]{3}[a-h]$", permission=SUPERUSER, priority=10
 )
 contest_screenshot = on_regex(
-    "^(abc|arc|agc)[0-9]{3}(?![a-z])", permission=SUPERUSER, priority=10
+    "^(abc|arc|agc)[0-9]{3}$", permission=SUPERUSER, priority=10
 )
 standings_screenshot = on_regex(
-    "^(abc|arc|agc)[0-9]{3}rk", permission=SUPERUSER, priority=10
+    "^(abc|arc|agc)[0-9]{3}rk$", permission=SUPERUSER, priority=10
 )
 editorial_screenshot = on_regex(
-    "^(abc|arc|agc)[0-9]{3}[a-h]ed", permission=SUPERUSER, priority=10
+    "^(abc|arc|agc)[0-9]{3}[a-h]ed$", permission=SUPERUSER, priority=10
 )
 
 
 @problem_screenshot.handle()
 @sender.catch(Exception, log="未知错误...")
 @sender.catch(LockedError, log="冷却中...")
-@locker.lock("1")
+@locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
     contest_prefix = matched[0:3]
     contest_id = matched[3:-1]
@@ -51,7 +52,7 @@ async def _(matched: str = RegexMatched()):
 @contest_screenshot.handle()
 @sender.catch(Exception, log="未知错误...")
 @sender.catch(LockedError, log="冷却中...")
-@locker.lock("1")
+@locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
     contest_prefix = matched[0:3]
     contest_id = matched[3:]
@@ -65,7 +66,7 @@ async def _(matched: str = RegexMatched()):
 @standings_screenshot.handle()
 @sender.catch(Exception, log="未知错误...")
 @sender.catch(LockedError, log="冷却中...")
-@locker.lock("1")
+@locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
     if config.atcoder_pswd is None or config.atcoder_user is None:
         await standings_screenshot.finish("该功能需要配置")
@@ -88,7 +89,7 @@ async def _(matched: str = RegexMatched()):
     matcher=editorial_screenshot,
     func_msg=lambda y: t if (t := str(y)) else "似乎有什么东西消失了...",
 )
-@locker.lock("1")
+@locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
     contest_prefix = matched[0:3]
     contest_id = matched[3:6]

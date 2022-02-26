@@ -1,3 +1,5 @@
+COMMAND_LOCK = "_command_lock"
+
 from pydantic import BaseSettings, Extra
 
 
