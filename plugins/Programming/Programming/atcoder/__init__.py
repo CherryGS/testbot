@@ -1,9 +1,10 @@
-from admin import sender, locker, LockedError
+from admin import sender, LockedError
 from httpx import AsyncClient
 from nonebot import on_regex
 from nonebot.adapters.onebot.v11 import MessageSegment
 from nonebot.params import RegexMatched
 from nonebot.permission import SUPERUSER
+from anyutils import locker
 
 from ..config import COMMAND_LOCK
 from ..exceptions import SourceNotFoundError

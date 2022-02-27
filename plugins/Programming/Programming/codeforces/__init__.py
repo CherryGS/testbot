@@ -1,10 +1,11 @@
-from admin import LockedError, locker, sender
+from admin import LockedError, sender
 from httpx import AsyncClient
 from nonebot import on_regex
 from nonebot.adapters.onebot.v11 import MessageSegment
 from nonebot.log import logger
 from nonebot.params import RegexMatched
 from nonebot.permission import SUPERUSER
+from anyutils import locker
 
 from ..initialize import get_page, params_screenshot
 from ..config import COMMAND_LOCK

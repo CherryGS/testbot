@@ -1,6 +1,6 @@
 from functools import wraps
 from typing import Any, Awaitable, Callable, Hashable
-from .exc import LockedError
+from .exception import LockedError
 
 from inspect import stack
 
