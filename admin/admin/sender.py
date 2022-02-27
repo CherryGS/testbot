@@ -6,7 +6,6 @@ from typing import Any, Awaitable, Callable, Iterable
 from nonebot import get_bot
 from nonebot.adapters import Bot
 from nonebot.exception import NoneBotException
-from nonebot.log import logger
 from nonebot.matcher import Matcher
 
 
