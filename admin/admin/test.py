@@ -1,9 +1,11 @@
-from .locker import *
-from .sender import *
-from nonebot import on_command
-from nonebot.permission import SUPERUSER
-from nonebot.exception import NoneBotException
 import asyncio
+
+from anyutils import LockedError, locker
+from nonebot import on_command
+from nonebot.exception import NoneBotException
+from nonebot.permission import SUPERUSER
+
+from .sender import *
 
 test = on_command("testadmin", permission=SUPERUSER)
 

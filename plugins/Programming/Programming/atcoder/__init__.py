@@ -32,8 +32,8 @@ editorial_screenshot = on_regex(
 
 
 @problem_screenshot.handle()
-@sender.catch(Exception, log="未知错误...")
-@sender.catch(LockedError, log="冷却中...")
+@sender.catch(Exception)
+@sender.catch(LockedError, log="冷却中...", matcher=problem_screenshot)
 @locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
     contest_prefix = matched[0:3]
@@ -51,8 +51,8 @@ async def _(matched: str = RegexMatched()):
 
 
 @contest_screenshot.handle()
-@sender.catch(Exception, log="未知错误...")
-@sender.catch(LockedError, log="冷却中...")
+@sender.catch(Exception)
+@sender.catch(LockedError, log="冷却中...", matcher=contest_screenshot)
 @locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
     contest_prefix = matched[0:3]
@@ -65,8 +65,8 @@ async def _(matched: str = RegexMatched()):
 
 
 @standings_screenshot.handle()
-@sender.catch(Exception, log="未知错误...")
-@sender.catch(LockedError, log="冷却中...")
+@sender.catch(Exception)
+@sender.catch(LockedError, log="冷却中...", matcher=standings_screenshot)
 @locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
     if config.atcoder_pswd is None or config.atcoder_user is None:
@@ -83,8 +83,8 @@ async def _(matched: str = RegexMatched()):
 
 
 @editorial_screenshot.handle()
-@sender.catch(Exception, log="未知错误...")
-@sender.catch(LockedError, log="冷却中...")
+@sender.catch(Exception)
+@sender.catch(LockedError, log="冷却中...", matcher=editorial_screenshot)
 @sender.catch(
     exc=SourceNotFoundError,
     matcher=editorial_screenshot,

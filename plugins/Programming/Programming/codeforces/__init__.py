@@ -20,8 +20,8 @@ contest_screenshot = on_regex("^cf[0-9]+$", permission=SUPERUSER, priority=10)
 
 
 @standings_screenshot.handle()
-@sender.catch(Exception, log="未知错误...")
-@sender.catch(LockedError, log="冷却中...")
+@sender.catch(Exception)
+@sender.catch(LockedError, log="冷却中...", matcher=standings_screenshot)
 @locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
     logger.debug(f"standings_screenshot regex match {matched}")
@@ -33,11 +33,11 @@ async def _(matched: str = RegexMatched()):
 
 
 @problem_screenshot.handle()
-@sender.catch(Exception, log="未知错误...")
-@sender.catch(LockedError, log="冷却中...")
+@sender.catch(Exception)
+@sender.catch(LockedError, log="冷却中...", matcher=problem_screenshot)
 @locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
-    logger.debug(f"problem_screenshotregex match {matched}")
+    logger.debug(f"problem_screenshot regex match {matched}")
     contestId = matched[2:-1]
     idx = matched[-1]
     img = await get_problem_screenshot(
@@ -47,8 +47,8 @@ async def _(matched: str = RegexMatched()):
 
 
 @spstandings_screenshot.handle()
-@sender.catch(Exception, log="未知错误...")
-@sender.catch(LockedError, log="冷却中...")
+@sender.catch(Exception)
+@sender.catch(LockedError, log="冷却中...", matcher=spstandings_screenshot)
 @locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
     params = matched.split(" ")
@@ -65,8 +65,8 @@ async def _(matched: str = RegexMatched()):
 
 
 @contest_screenshot.handle()
-@sender.catch(Exception, log="未知错误...")
-@sender.catch(LockedError, log="冷却中...")
+@sender.catch(Exception)
+@sender.catch(LockedError, log="冷却中...", matcher=contest_screenshot)
 @locker.lock(COMMAND_LOCK)
 async def _(matched: str = RegexMatched()):
     logger.debug(f"contest_screenshot regex match {matched}")
