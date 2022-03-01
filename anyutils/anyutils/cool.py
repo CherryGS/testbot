@@ -1,9 +1,9 @@
-from functools import wraps
-from typing import Any, Callable
 from time import time
+from typing import Any, Callable
+
+from decorator import decorate
 
 from .exception import CoolingError
-from decorator import decorate
 
 
 class CoolMaker:

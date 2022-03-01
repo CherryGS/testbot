@@ -1,8 +1,8 @@
 from functools import wraps
-from typing import Any, Awaitable, Callable, Hashable
-from .exception import LockedError
-
 from inspect import stack
+from typing import Any, Awaitable, Callable, Hashable
+
+from .exception import LockedError
 
 
 class SimpleLocker:

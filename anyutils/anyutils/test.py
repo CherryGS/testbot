@@ -1,7 +1,7 @@
 import uuid
 
-from sqlalchemy.orm import registry, declarative_mixin, DeclarativeMeta
 from sqlalchemy.ext.asyncio import AsyncEngine
+from sqlalchemy.orm import DeclarativeMeta, registry
 
 
 class AutoTable:

@@ -1,11 +1,6 @@
 import asyncio
 import inspect
-from typing import (
-    Any,
-    Awaitable,
-    Callable,
-    Coroutine,
-)
+from typing import Any, Awaitable, Callable, Coroutine
 
 from loguru import logger
 
